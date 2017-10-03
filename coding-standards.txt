@@ -3,3 +3,4 @@ Always have brackets on if statements and loops, even if there is only one line 
 Push brackets to next line instead of right after a statement.
 Javadoc-style documentation.
 Explain custom data types in function description.
+256256262

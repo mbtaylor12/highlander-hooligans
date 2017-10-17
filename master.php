@@ -1,6 +1,8 @@
 <?php
 	function makeHeader(index)
 	{
-		print("hi");
+		print("<html><p>I am cool</p></html>");
 	}
+
+	makeHeader(0);
 ?>

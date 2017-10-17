@@ -1,8 +1,21 @@
 <?php
-	function makeHeader(index)
+	function makeHeader($index)
 	{
-		print("<html><p>I am cool</p></html>");
+		$headers = array( "Downloads", "Checkouts", "Queue", "Hardware Info", "Accounts", "About" );
+
+		$headerTable = "<table>\n" .
+					   "	<tr>\n";
+					   
+		foreach ($headers as $header) 
+		{
+			$headerTable .= "		<td>$header</td>\n";
+		}
+
+		$headerTable .= "	</tr>\n" .
+						"</table>";
+
+		return $headerTable;
 	}
 
-	makeHeader(0);
+	echo makeHeader(1);
 ?>

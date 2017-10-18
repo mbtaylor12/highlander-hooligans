@@ -5,6 +5,7 @@
 
 		$headerTable = "<table id='headerTable'>\n" .
 					   "	<tr>\n";
+					   //"		<td class='tacHeader'><img src='images/taclogo.png' alt='Taco Logo'></td>\n"; Image appears, but for some reason has a ton of whitespace around it.
 
 		$indexIterator = 0;
 
@@ -19,7 +20,7 @@
 		}
 
 		$headerTable .= "	</tr>\n" .
-						"</table>";
+						"</table>" ;
 
 		return $headerTable;
 	}

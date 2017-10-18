@@ -1,6 +1,9 @@
 #headerTable{
 	width: 100%;
 }
+.tacHeader{
+	width: 100%;
+}
 .selectedHeader,.unselectedHeader{
 	text-align: center;
 	border-style: solid;

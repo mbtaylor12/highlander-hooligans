@@ -27,3 +27,37 @@
 	color: white;
 	border-color: dimgray;
 }
+.card{
+	height: 56px;
+	width: 900px;
+	border-style: solid;
+	margin: 1px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.cardTitle1,.cardTitle2{
+	display: inline;
+	font-weight: bold;
+	font-size: 20px;
+}
+.cardTitle1,.contentLeft{
+	margin-left: 10px;
+}
+.cardTitle2,.contentRight{
+	margin-right: 10px;
+}
+.cardTitle1{
+	float: left;
+}
+.cardTitle2{
+	float: right;
+}
+.cardContent{
+	width: 100%;
+}
+.contentLeft{
+	float: left;
+}
+.contentRight{
+	float: right;
+}

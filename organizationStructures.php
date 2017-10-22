@@ -1,4 +1,7 @@
 <?php
+	/*
+	*Creates the hardware card view.
+	*/
 	function createHardwareCardView()
 	{
 		//Temporary hardware info until we get database running

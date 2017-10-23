@@ -27,6 +27,9 @@
 	color: white;
 	border-color: dimgray;
 }
+.card:hover{
+	background-color: #eaeaea !important;
+}
 .card{
 	height: 56px;
 	width: 900px;

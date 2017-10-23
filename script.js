@@ -41,6 +41,8 @@ function expandHardware(id, manufacturer, connectionStatus, assetTag, ipAddress,
 
 	//Expands the current card view.
 	element.style.height = "350px";
+	//Changes current card's background color to a slightly darker color
+	element.style.backgroundColor = "#eaeaea";
 
 	//Adds child div to parent div
 	element.appendChild(content);
@@ -61,8 +63,9 @@ function contract()
 	if(cardContent != null)
 		cardContent.parentNode.removeChild(cardContent);
 
-	//Contracts the height of the open cardview
+	//Contracts the height and reverts background color of the open cardview
 	for(i = 0; i < cards.length; i++){
 		cards[i].style.height = "56px";
+		cards[i].style.backgroundColor = "white";
 	}
 }

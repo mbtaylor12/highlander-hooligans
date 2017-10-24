@@ -64,3 +64,14 @@
 .contentRight{
 	float: right;
 }
+.cardContainer{
+	width: 62%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.cardTitle{
+	width:100%;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+}

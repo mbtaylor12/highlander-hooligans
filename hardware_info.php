@@ -12,6 +12,6 @@
 	</head>
 	<body>
 		<?php echo makeHeader(3); ?>
-		<?php echo createHardwareCollapsibleView(); ?>
+		<?php echo hardware(); ?>
 	</body>
 </html>

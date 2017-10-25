@@ -1,31 +1,26 @@
-#headerTable{
-	width: 100%;
+#headerContainer {
+ width:100%;
+ text-align:center;
 }
-.tacHeader{
-	width: 100%;
-}
-.selectedHeader,.unselectedHeader{
-	text-align: center;
-	border-style: solid;
-	border-width: 5px;
-	border-color: black;
-	height: 50px;
-	font-size: 25px;
+.headerUnselected{
 	font-family: arial;
+	font-size: 35px;
 	font-weight: bold;
+	border-style: solid;
+	color:black;
+	border-width: 5px;
+	text-decoration: none;
 }
-.unselectedHeader{
-	cursor: pointer;
-}
-.selectedHeader{
+.headerSelected,.headerSelected:hover,.headerUnselected:hover{
+	font-family: arial;
+	font-size: 35px;
+	font-weight: bold;
+	border-style: solid;
+	color:white;
+	border-color: dimgrey;
+	border-width: 5px;
 	background-color: black;
-	color: white;
-	border-color: dimgray;
-}
-.unselectedHeader:hover{
-	background-color: black;
-	color: white;
-	border-color: dimgray;
+	text-decoration: none;
 }
 .card:hover{
 	background-color: #eaeaea !important;

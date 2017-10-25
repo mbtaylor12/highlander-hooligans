@@ -8,25 +8,24 @@
 		//An array of pages and their title. "page.php" => "Header Text".
 		$headers = array( "downloads.php" => "Downloads", "checkouts.php" => "Checkouts", "queue.php" => "Queue", "hardware_info.php" => "Hardware Info", "accounts.php" => "Accounts", "about.php" => "About" );
 
-		$headerTable = "<table id='headerTable'>\n" .
-					   "	<tr>\n";
-					   //"		<td class='tacHeader'><img src='images/taclogo.png' alt='Taco Logo'></td>\n"; Image appears, but for some reason has a ton of whitespace around it.
-
+		$headerTable = "<br /><div id='headerContainer'>\n";
 
 		$indexIterator = 0;
+
 		//Checks which header to select
 		foreach ($headers as $key => $header) 
 		{
+			$headerTable .= "";
+
 			if($indexIterator === $index)
-				$headerTable .= "		<td class='selectedHeader'>$header</td>\n";
+				$headerTable .= "<a href='$key' class='headerSelected'>$header</a>\n";
 			else
-				$headerTable .= "		<td class='unselectedHeader' onclick=\"window.location='$key';\">$header</td>\n";
+				$headerTable .= "<a href='$key' class='headerUnselected'>$header</a>\n";
 
 			$indexIterator += 1;
 		}
 
-		$headerTable .= "	</tr>\n" .
-						"</table>" ;
+		$headerTable .= "</div><br />";
 
 		return $headerTable;
 	}

@@ -11,7 +11,7 @@
 	*/
 	function hardware()
 	{
-			$jsonString = exec('hardwareLoaner.py -s hardwareLoaners -all');
+		$jsonString = exec('hardwareLoaner.py -s hardwareLoaners -all');
 
 
 		$cards = jsonTo2DArray($jsonString);

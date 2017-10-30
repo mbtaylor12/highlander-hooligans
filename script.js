@@ -69,3 +69,15 @@ function contract()
 		cards[i].style.backgroundColor = "white";
 	}
 }
+
+function makeEditable(thisInput)
+{
+	thisInput.removeAttribute("readonly");
+	thisInput.className = "editing";
+}
+
+function stopEditing(thisInput)
+{
+	thisInput.setAttribute("readonly", "readonly");
+	thisInput.className = "notEditing";
+}

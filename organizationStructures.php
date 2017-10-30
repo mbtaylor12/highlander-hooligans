@@ -10,26 +10,6 @@
 	*/
 	function hardware()
 	{
-		//Temporary hardware info until we get database running
-		$card1 = array("Name" => "YHPC1", "Serial Number" => "3N4AB8E7",
-			"Manufacturer" => "Apple", "Connection Status" => "Online", 
-			"Asset Tag" => "YHPC0002", "IP Address" => "10.1.23.2", 
-			"MAC Address" => "3A:34:52:C4:69:B8", "Location" => "Young Hall");
-		$card2 = array("Name" => "YHPC2", "Serial Number" => "3N4AB8E8",
-			"Manufacturer" => "Lenovo", "Connection Status" => "Offline", 
-			"Asset Tag" => "YHPC0022", "IP Address" => "10.1.23.6", 
-			"MAC Address" => "4B:42:61:D4:12:11", "Location" => "Young Hall");
-		$card3 = array("Name" => "YHPC3", "Serial Number" => "3N4AB8E9",
-			"Manufacturer" => "Gateway", "Connection Status" => "Online", 
-			"Asset Tag" => "YHPC00001", "IP Address" => "10.1.23.1", 
-			"MAC Address" => "CC:33:55:C2:66:BB", "Location" => "Young Hall");
-		$card4 = array("Name" => "YHPC4", "Serial Number" => "3N4ABFE9",
-			"Manufacturer" => "Gateway", "Connection Status" => "Offline", 
-			"Asset Tag" => "YHPC00001", "IP Address" => "10.1.23.2", 
-			"MAC Address" => "CC:33:55:C4:66:BB", "Location" => "Young Hall");
-
-		//$cards = array($card1, $card2, $card3, $card4);
-
 			$jsonString = '[
  {
    "assetNum": "RU10899",
@@ -154,15 +134,15 @@
 
 			//Creates the body of the card view in the layout I have chosen. 
 			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
-			$content = "					<p class='contentLeft'>Manufacturer: $manuFac </p>\n
-			 								<p class='contentRight'>Location: $roomNum </p><br /><br />\n
-			 								<p class='contentLeft'>Model: $modelNum </p><br /><br />\n
-			 								<p class='contentLeft'>Serial Number: $serialNum </p><br /><br />\n
-			 								<p class='contentLeft'>Asset Tag: $assetTag </p><br /><br />\n
-			 								<p class='contentLeft'>Asset Description: $assetDesc </p><br /><br />\n
-			 								<p class='contentLeft'>Periphereals: $periphIncluded </p>\n
-			 								<p class='contentLeft'>Ticket Status: $ticketStat </p><br /><br />\n
-			 								<p class='contentRight'><button>Apply</button></p>\n";	
+			$content = "					<p class='contentLeft'>Manufacturer: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$manuFac'></p>\n
+			 								<p class='contentRight'>Location: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$roomNum'></p><br /><br />\n
+			 								<p class='contentLeft'>Model: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$modelNum'></p><br /><br />\n
+			 								<p class='contentLeft'>Serial Number: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$serialNum'></p><br /><br />\n
+			 								<p class='contentLeft'>Asset Tag: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$assetTag'></p><br /><br />\n
+			 								<p class='contentLeft'>Asset Description: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$assetDesc'></p><br /><br />\n
+			 								<p class='contentLeft'>Periphereals: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$periphIncluded'></p><br /><br />\n
+			 								<p class='contentLeft'>Ticket Status: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$ticketStat'></p><br />\n
+			 								<p class='contentRight'><button>Apply</button></p>\n";
 
 			//Assigns key-value pairs for the name and content.
 			$tempArray = array ("name" => $name, "content"=> $content);

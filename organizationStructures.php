@@ -3,6 +3,7 @@
 
 
 	error_reporting(E_ALL);
+
 	/*
 	*hardware() - Creates a collapisble card view for hardware.
 	*Calls function creatCollapsibleCardView using hardware data to get a hardware card view.
@@ -10,98 +11,8 @@
 	*/
 	function hardware()
 	{
-			$jsonString = '[
- {
-   "assetNum": "RU10899",
-   "assetDesc": "Laptop",
-   "manuFac": "Lenovo",
-   "modelNum": "T420",
-   "serialNum": "77dj883",
-   "periphIncluded": "Charger",
-   "roomNum": "Loaner Cabinet",
-   "ticketStat": 99009
- },
- {
-   "assetNum": "RU10998",
-   "assetDesc": "Laptop",
-   "manuFac": "Lenovo",
-   "modelNum": "T430",
-   "serialNum": "88dha2j",
-   "periphIncluded": "Charger",
-   "roomNum": "Young 403 (Office)",
-   "ticketStat": 77890
- },
- {
-   "assetNum": "RU104556",
-   "assetDesc": "Tablet",
-   "manuFac": "Apple",
-   "modelNum": "iPad ",
-   "serialNum": "9088743",
-   "periphIncluded": "None",
-   "roomNum": "Loaner Cabinet",
-   "ticketStat": 97739
- },
- {
-   "assetNum": "RU109999",
-   "assetDesc": "Laptop",
-   "manuFac": "Apple",
-   "modelNum": "MacBook Pro",
-   "serialNum": "897kdha2",
-   "periphIncluded": "None",
-   "roomNum": "Loaner Cabinet",
-   "ticketStat": 987054
- },
- {
-   "assetNum": "RU109457",
-   "assetDesc": "T420 Laptop Dock",
-   "manuFac": "Lenovo",
-   "modelNum": "T6900",
-   "serialNum": "jd845773",
-   "periphIncluded": "Power Supply",
-   "roomNum": "Loaner Cabinet",
-   "ticketStat": 98999
- },
- {
-   "assetNum": "RU109766",
-   "assetDesc": "Laptop ",
-   "manuFac": "Leovo",
-   "modelNum": "T420 ",
-   "serialNum": "jjdk8872",
-   "periphIncluded": "Power Supply",
-   "roomNum": "Loaner Cabinet",
-   "ticketStat": 94776
- },
- {
-   "assetNum": "RU1085677",
-   "assetDesc": "Desktop",
-   "manuFac": "Lenovo ",
-   "modelNum": "6870",
-   "serialNum": "dasd937",
-   "periphIncluded": "None",
-   "roomNum": "Loaner Cabinet",
-   "ticketStat": 488729
- },
- {
-   "assetNum": "RU1098433",
-   "assetDesc": "Laptop",
-   "manuFac": "Apple",
-   "modelNum": "MacBook Pro (2012)",
-   "serialNum": "dad98sj",
-   "periphIncluded": "None",
-   "roomNum": "Loaner Cabinet",
-   "ticketStat": 345432
- },
- {
-   "assetNum": "RU1098374",
-   "assetDesc": "Desktop",
-   "manuFac": "Apple",
-   "modelNum": "iMac",
-   "serialNum": "3qef513",
-   "periphIncluded": "None",
-   "roomNum": "Davis 051",
-   "ticketStat": null
- }
-]';
+			$jsonString = exec('hardwareLoaner.py -s hardwareLoaners -all');
+
 
 		$cards = jsonTo2DArray($jsonString);
 
@@ -111,24 +22,14 @@
 		//Loops through each piece of hardware stored in 2D array
 		foreach ($cards as $card)
 		{
-			//Assigns variables from associative array
-			/*$name = $card["Name"];
-			$serialNumber = $card["Serial Number"];
-			$manufacturer = $card["Manufacturer"];
-			$connectionStatus = $card["Connection Status"];
-			$assetTag = $card["Asset Tag"];
-			$ipAddress = $card["IP Address"];
-			$macAddress = $card["MAC Address"];
-			$location = $card["Location"];*/
-
-			$assetTag = $card['assetNum'];
-			$assetDesc = $card['assetDesc'];
-			$manuFac = $card['manuFac'];
-			$modelNum = $card['modelNum'];
-			$serialNum = $card['serialNum'];
-			$periphIncluded = $card['periphIncluded'];
-			$roomNum = $card['roomNum'];
-			$ticketStat = $card['ticketStat'];
+			$assetTag = $card[0];
+			$assetDesc = $card[1];
+			$manuFac = $card[2];
+			$modelNum = $card[3];
+			$serialNum = $card[4];
+			$periphIncluded = $card[5];
+			$roomNum = $card[6];
+			$ticketStat = $card[7];
 
 			$name = $assetTag;
 
@@ -205,5 +106,4 @@
 
 		return $jsonArray;
 	}
-
 ?>

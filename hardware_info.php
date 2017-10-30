@@ -15,5 +15,10 @@
 	<body>
 		<?php echo makeHeader(3); ?>
 		<?php echo hardware(); ?>
+
+		<form name='insert'>
+			Manufacturer: <input type='text' name='manufacturer'>
+			Model: <input type='text' name=
+		</form>
 	</body>
 </html>

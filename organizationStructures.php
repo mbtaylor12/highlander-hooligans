@@ -99,7 +99,7 @@
 				   . "					<a data-toggle='collapse' data-parent='#accordion' href='#$name'><div class='cardTitle'>$name</div></a>\n"
 				   . "				</h4>\n"
 				   . "			</div>\n"
-				   . "			<div id='$user' class='panel-collapse collapse collapse'>\n"
+				   . "			<div id='$name' class='panel-collapse collapse collapse'>\n"
 				   . "				<div class='panel-body'>\n"
 				   . "					$content"
 				   . "				</div>\n"

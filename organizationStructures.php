@@ -57,22 +57,34 @@
 		$cards = jsonTo2DArray($jsonString);
 		//Initializes the future 2D array.
 		$users = array();
-		//Loops through each piece of hardware stored in 2D array
+		//Loops through user stored in 2D array
 		foreach ($cards as $card)
 		{
 			$user = $card[0];
 			$password = $card[1];
 			
 			$name = $user;
+            
 			//Creates the body of the card view in the layout I have chosen. 
 			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
-			$content = "					<p class='contentLeft'>Username: <input type='text' class='notEditing' readonly='readonly'                                                               ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$user'></p>\n     
-			 								<p class='contentRight'>Password: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$password'></p><br /><br />\n
+            //The select option for choosing the user permissions may be changed up later -Dylan
+            
+			$content = "					<p class='contentLeft'>Username: <input type='text' class='notEditing' readonly='readonly'                                                               
+                                            ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$user'></p>\n   
+			 								<p class='contentLeft'>Password: <input type='text' class='notEditing' readonly='readonly' 
+                                            ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$password'></p><br 
+                                            /><br />\n
+                                            <select class='contentRight'>
+                                                <option value='admin'>Admin</option>
+                                                <option value='mod'>Moderator</option>
+                                                <option value='studenttech'>Student Tech</option>   
+                                                <option value='user''>User</option>
+                                            </select>
 			 								<p class='contentRight'><button>Apply</button></p>\n";
             
 			//Assigns key-value pairs for the name and content.
 			$tempArray = array ("name" => $user, "content"=> $content);
-			//Pushes the $tempArray onto the $hardware array, creating a 2D array.
+			//Pushes the $tempArray onto the $user array, creating a 2D array.
 			array_push($users, $tempArray);
 		}
 		return createCollapsibleView($users);

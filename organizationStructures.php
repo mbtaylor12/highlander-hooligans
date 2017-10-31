@@ -69,17 +69,14 @@
 			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
             //The select option for choosing the user permissions may be changed up later -Dylan
             
-			$content = "					<p class='contentLeft'>Username: <input type='text' class='notEditing' readonly='readonly'                                                               
-                                            ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$user'></p>\n   
-			 								<p class='contentLeft'>Password: <input type='text' class='notEditing' readonly='readonly' 
-                                            ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$password'></p><br 
-                                            /><br />\n
-                                            <select class='contentRight'>
+			$content = "					<p class='contentLeft'>Username: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$user'></p>\n 
+			 								<p class='contentRight'>Password: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$password'></p><br /><br />\n
+                                            <select class='contentLeft'>
                                                 <option value='admin'>Admin</option>
                                                 <option value='mod'>Moderator</option>
                                                 <option value='studenttech'>Student Tech</option>   
                                                 <option value='user''>User</option>
-                                            </select>
+                                            </select><br/><br />
 			 								<p class='contentRight'><button>Apply</button></p>\n";
             
 			//Assigns key-value pairs for the name and content.

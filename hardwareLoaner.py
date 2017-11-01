@@ -62,7 +62,7 @@ def create_table(db, table_name, param_name, param_type):
 	execute_command(db, command)
 
 def create_hardware_loaners():
-	db = connect_database(databaseFile)
+	db = connect_database()
 	table_name = "hardwareLoaners"
 	param_name = ['assetName', 'assetDesc', 'manuFac', 'modeNum', 'serialNum', 'periphIncluded', 'roomNum', 'ticketStat']
 	param_type = ['TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'INTEGER']
@@ -130,7 +130,7 @@ def main():
 	elif sys.argv[1] == "-i":
 		for i in range(3, len(sys.argv)):
 			if sys.argv[i] == "-v":
-				for j in range(i, len(sys.argv)):
+				for j in range(i+1, len(sys.argv)):
 					paramValue.append(sys.argv[j])
 				break
 			else:

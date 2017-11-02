@@ -11,10 +11,12 @@
 		<?php echo makeHeader(2); ?>
 
 		<?php 
-			$loggedIn = false;
+			$loggedIn = true;
 
 			if(!$loggedIn)
 				echo displayQueueSignIn();
+			else
+				echo displayQueue();
 		?>
 	</body>
 </html>

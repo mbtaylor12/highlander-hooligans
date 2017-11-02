@@ -164,4 +164,42 @@
 			<center><button id='queueSubmit' type='submit'>Sign In</button></center>
 		</div>";
 	}
+
+	function displayQueue()
+	{
+		$jsonString = exec('hardwareLoaner.py -s waitingQueue -all');
+		$users = jsonTo2DArray($jsonString);
+
+		$result = 
+		"<div>
+			<table id='queueTable' border='1'>
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>OS</th>
+					<th>Description</th>
+				</tr>";
+
+			foreach ($users as $user) 
+			{
+				$name = $user[0];
+				$email = $user[1];
+				$os = $user[2];
+				$description = $user[3];
+				
+				$result .="
+				<tr>
+					<td>$name</td>
+					<td>$email</td>
+					<td>$os</td>
+					<td>$description</td>
+				</tr>";
+			}
+
+		$result .= 
+		"	</table>
+		</div>";
+
+		return $result;
+	}
 ?>

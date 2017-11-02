@@ -131,4 +131,37 @@
 		$jsonArray = json_decode($jsonString, true);
 		return $jsonArray;
 	}
+
+	function displayQueueSignIn()
+	{
+		return
+		"<div id='queueLoginBox'>
+			<table id='queueTable'>
+				<tr> 
+					<td>Name: </td>
+					<td><input type='text' id='queueName' name='queueName'></td>
+				</tr>
+				<tr> 
+					<td>Email: </td>
+					<td><input type='text' id='queueEmail' name='queueEmail'></td>
+				</tr>
+				<tr> 
+					<td>OS/Platform: </td>
+					<td>
+						<select>
+							<option value='N/A'>N/A</option>
+							<option value='Windows'>Windows</option>
+							<option value='MacOS'>MacOS</option>
+							<option value='Linux'>Linux</option>
+						</select>
+					</td>
+				</tr>
+				<tr> 
+					<td>Problem Description: </td>
+					<td><input type='text' id='queueDescription' name='queueDescription'></td>
+				</tr>
+			</table>
+			<center><button id='queueSubmit' type='submit'>Sign In</button></center>
+		</div>";
+	}
 ?>

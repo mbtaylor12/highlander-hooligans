@@ -10,9 +10,22 @@
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<title>Hardware Info</title>
 
-		<?php
-			function display()
+
+	</head>
+  
+
+	<body id='accountsbody'>
+        <div id="header"><?php echo makeHeader(3); ?></div>
+	<div id='centerContent'>
+        <div class='moduleCreate'>
+        <h1><b><u>Hardware Info</u></b></h1>
+        <?php echo hardware(); ?>
+
+            	<?php
+            
+			if ($_SERVER['REQUEST_METHOD'] == 'POST')
 			{
+			 
 				$assetNum = $_POST['assetTag'];
 				$assetDesc = $_POST['assetDesc'];
 				$manuFac = $_POST['manufacturer'];
@@ -22,28 +35,22 @@
 				$roomNum = $_POST['location'];
 				$ticketStat = $_POST['ticketStatus'];
 
-				$execStatement = "hardwareLoaner.py -i hardwareLoaners assetNum assetDesc manuFac modelNum serialNum periphIncluded roomNum ticketStat -v $assetNum $assetDesc $manuFac $modelNum $serialNum $periphIncluded $roomNum $ticketStat";
+				$execStatement = "python hardwareLoaner.py -i hardwareLoaners assetNum assetDesc manuFac modelNum serialNum periphIncluded roomNum ticketStat -v $assetNum $assetDesc $manuFac $modelNum $serialNum $periphIncluded $roomNum $ticketStat";
 
-				echo $execStatement;
 
 				exec($execStatement);
+                
+                echo '<meta http-equiv="Refresh" content="0;' . $page . '">';
 
-				echo "parent.window.location.reload();";
 			}
 		?>
-	</head>
 
-	<body>
-		<?php echo makeHeader(3); ?>
-		<?php echo hardware(); ?>
-
-
-		<?php
-			if(isset($_POST['Insert']))
-			{
-			   display();
-			} 
-		?>
+	</div>
+        </div>
+        
+        <div id="inputLeft" class="createModuleInput">
+        	
+          
 
 		<form action='hardware_info.php' method='post' name='insert'>
 			Manufacturer: <input type='text' name='manufacturer'>
@@ -64,5 +71,21 @@
 			<br />
 			<input type='submit' name='Insert' value='submit' />
 		</form>
+            </div>
+          	
+        
+        <div id="inputRight" class="createModuleInput">
+        	
+
+		<form action='hardware_info.php' method='post' name='insert'>                 
+			Search key: <input type='text' name='manufacturer'>
+			<br />
+			Search by: <input type='text' name='model'>
+			<br />
+			<input type='submit' name='Insert' value='submit' />
+		</form>
+            </div>
+        
+        
 	</body>
 </html>

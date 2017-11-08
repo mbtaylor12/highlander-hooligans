@@ -81,3 +81,4 @@ function stopEditing(thisInput)
 	thisInput.setAttribute("readonly", "readonly");
 	thisInput.className = "notEditing";
 }
+

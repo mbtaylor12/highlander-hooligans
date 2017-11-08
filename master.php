@@ -6,26 +6,26 @@
 	function makeHeader($index)
 	{
 		//An array of pages and their title. "page.php" => "Header Text".
-		$headers = array( "downloads.php" => "Downloads", "checkouts.php" => "Checkouts", "queue.php" => "Queue", "hardware_info.php" => "Hardware Info", "accounts.php" => "Accounts", "about.php" => "About" );
+		$headers = array( "downloads.php" => "Downloads", "checkouts.php" => "Checkouts", "queue.php" => "Queue", "hardware_info.php" => "Hardware Info", "accounts.php" => "Admin", "about.php" => "About" );
 
-		$headerTable = "<br /><div id='headerContainer'>\n";
+		$headerTable = "<br /><div id='colorbar'><img id='img1' src='/images/radfordlogo2.gif' alt='logo' ><div id='headerContainer'><div id='headerLinks'>\n";
 
 		$indexIterator = 0;
+
 
 		//Checks which header to select
 		foreach ($headers as $key => $header) 
 		{
-			$headerTable .= "";
 
 			if($indexIterator === $index)
-				$headerTable .= "<a href='$key' class='headerSelected'>$header</a>\n";
+				$headerTable .= "<a id='test' href='$key' class='headerSelected'>$header</a>\n";
 			else
-				$headerTable .= "<a href='$key' class='headerUnselected'>$header</a>\n";
+				$headerTable .= "<a id='test' href='$key' class='headerUnselected'>$header</a>\n";
 
 			$indexIterator += 1;
 		}
 
-		$headerTable .= "</div><br />";
+		$headerTable .= "</div></div></div><br />";
 
 		return $headerTable;
 	}

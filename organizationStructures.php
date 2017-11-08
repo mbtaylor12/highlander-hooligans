@@ -8,7 +8,7 @@
 	*/
 	function hardware()
 	{
-			$jsonString = exec('hardwareLoaner.py -s hardwareLoaners -all');
+			$jsonString = exec('python hardwareLoaner.py -s hardwareLoaners -all');
 		$cards = jsonTo2DArray($jsonString);
 		//Initializes the future 2D array.
 		$hardware = array();
@@ -26,15 +26,15 @@
 			$name = $assetTag;
 			//Creates the body of the card view in the layout I have chosen. 
 			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
-			$content = "					<p class='contentLeft'>Manufacturer: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$manuFac'></p>\n
-			 								<p class='contentRight'>Location: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$roomNum'></p><br /><br />\n
+			$content = "					<div id='leftSide'><center><p class='contentLeft'>Manufacturer: <input type='text' class='notEditing'                                                    readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$manuFac'></p>\n
+			 								<p class='contentLeft'>Location: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$roomNum'></p><br /><br />\n
 			 								<p class='contentLeft'>Model: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$modelNum'></p><br /><br />\n
-			 								<p class='contentLeft'>Serial Number: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$serialNum'></p><br /><br />\n
+			 								<p class='contentLeft'>Serial Number: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$serialNum'></p><br /><br />\n</center></div><div id='rightSide'><center>
 			 								<p class='contentLeft'>Asset Tag: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$assetTag'></p><br /><br />\n
 			 								<p class='contentLeft'>Asset Description: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$assetDesc'></p><br /><br />\n
 			 								<p class='contentLeft'>Periphereals: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$periphIncluded'></p><br /><br />\n
-			 								<p class='contentLeft'>Ticket Status: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$ticketStat'></p><br />\n
-			 								<p class='contentRight'><button>Apply</button></p>\n";
+			 								<p class='contentLeft'>Ticket Status: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$ticketStat'></p><br />\n</center></div>
+			 								<center><p class='contentLeft'><button>Apply</button></p></center>\n"; 
 			//Assigns key-value pairs for the name and content.
 			$tempArray = array ("name" => $name, "content"=> $content);
 			//Pushes the $tempArray onto the $hardware array, creating a 2D array.
@@ -53,7 +53,7 @@
 
     function accounts(){
         
-        $jsonString = exec('hardwareLoaner.py -s Users -all');
+        $jsonString = exec('python hardwareLoaner.py -s Users -all');
 		$cards = jsonTo2DArray($jsonString);
 		//Initializes the future 2D array.
 		$users = array();
@@ -69,7 +69,8 @@
 			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
             //The select option for choosing the user permissions may be changed up later -Dylan
             
-			$content = "					<p class='contentLeft'>Username: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$user'></p>\n 
+			$content = "					
+            <p class='contentLeft'>Username: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$user'></p>\n 
 			 								<p class='contentRight'>Password: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$password'></p><br /><br />\n
                                             <select class='contentLeft'>
                                                 <option value='admin'>Admin</option>
@@ -88,6 +89,127 @@
         
         
     }
+
+//This creates a card view for utility downloads
+
+    function downloadsUtilities(){
+        
+        $jsonString = exec('python hardwareLoaner.py -s downloadsUtilities -all');
+		$cards = jsonTo2DArray($jsonString);
+		//Initializes the future 2D array.
+		$users = array();
+		//Loops through user stored in 2D array               
+		foreach ($cards as $card)
+		{
+            
+			$downloadName = $card[0];
+			$downloadLink = $card[1];
+            $comments = $card[2];
+			
+			$name = $downloadName;
+            
+			//Creates the body of the card view in the layout I have chosen. 
+			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
+            //The select option for choosing the user permissions may be changed up later -Dylan
+            
+			$content = "					
+            
+            <p class='contentLeft'>Download Link: <a href='$downloadLink' download>$downloadName</a></p>\n
+            <p class='contentRight'>Install Notes: $comments</p>
+            
+            
+            ";
+            
+			//Assigns key-value pairs for the name and content.
+			$tempArray = array ("name" => $downloadName, "content"=> $content);
+			//Pushes the $tempArray onto the $user array, creating a 2D array.
+			array_push($users, $tempArray);
+		}
+		return createCollapsibleView($users);
+        
+        
+    }
+//future driver card creation
+
+function downloadsDrivers(){
+        
+        $jsonString = exec('python hardwareLoaner.py -s downloadsDrivers -all');
+		$cards = jsonTo2DArray($jsonString);
+		//Initializes the future 2D array.
+		$users = array();
+		//Loops through user stored in 2D array
+		foreach ($cards as $card)
+		{
+            
+			$downloadName = $card[0];
+			$downloadLink = $card[1];
+            $comments = $card[2];
+			
+			$name = $downloadName;
+            
+			//Creates the body of the card view in the layout I have chosen. 
+			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
+            //The select option for choosing the user permissions may be changed up later -Dylan
+            
+			$content = "					
+            
+            <p class='contentLeft'>Download Link: <a href='$downloadLink' download>$downloadName</a></p>\n
+            <p class='contentRight'>Install Notes: $comments</p>
+            
+            
+            ";
+            
+			//Assigns key-value pairs for the name and content.
+			$tempArray = array ("name" => $downloadName, "content"=> $content);
+			//Pushes the $tempArray onto the $user array, creating a 2D array.
+			array_push($users, $tempArray);
+		}
+		return createCollapsibleView($users);
+        
+        
+    }
+
+//90% working queue card function. Card will not expand
+
+    function queue(){  
+        
+        $jsonString = exec('python queue.py -s waitingQueue -all');
+		$cards = jsonTo2DArray($jsonString);
+		//Initializes the future 2D array.
+		$users = array();
+		//Loops through user stored in 2D array
+		foreach ($cards as $card)
+		{
+			$namef = $card[0];
+			$email = $card[1];
+            $os = $card[2];
+            $description = $card[3];
+            
+			
+			$name = $namef;
+            
+			//Creates the body of the card view in the layout I have chosen. 
+			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
+            //The select option for choosing the user permissions may be changed up later -Dylan
+            
+			$content = "<p class=''>Name: $namef</p>\n
+                        <p class=''>Email: $email</p>\n
+                        <p class=''>Operating system: $os</p>\n
+                        <p class=''>Description of problem: $description</p>\n";
+            
+			//Assigns key-value pairs for the name and content.
+			$tempArray = array ("name" => $name, "content"=> $content);
+			//Pushes the $tempArray onto the $user array, creating a 2D array.
+			array_push($users, $tempArray);
+		}
+		return createCollapsibleView($users);
+        
+        
+    }
+
+   
+        
+    
     
 	function createCollapsibleView(array $cards)
 	{
@@ -130,76 +252,5 @@
 	{
 		$jsonArray = json_decode($jsonString, true);
 		return $jsonArray;
-	}
-
-	function displayQueueSignIn()
-	{
-		return
-		"<div id='queueLoginBox'>
-			<table id='queueTable'>
-				<tr> 
-					<td>Name: </td>
-					<td><input type='text' id='queueName' name='queueName'></td>
-				</tr>
-				<tr> 
-					<td>Email: </td>
-					<td><input type='text' id='queueEmail' name='queueEmail'></td>
-				</tr>
-				<tr> 
-					<td>OS/Platform: </td>
-					<td>
-						<select>
-							<option value='N/A'>N/A</option>
-							<option value='Windows'>Windows</option>
-							<option value='MacOS'>MacOS</option>
-							<option value='Linux'>Linux</option>
-						</select>
-					</td>
-				</tr>
-				<tr> 
-					<td>Problem Description: </td>
-					<td><input type='text' id='queueDescription' name='queueDescription'></td>
-				</tr>
-			</table>
-			<center><button id='queueSubmit' type='submit'>Sign In</button></center>
-		</div>";
-	}
-
-	function displayQueue()
-	{
-		$jsonString = exec('hardwareLoaner.py -s waitingQueue -all');
-		$users = jsonTo2DArray($jsonString);
-
-		$result = 
-		"<div>
-			<table id='queueTable' border='1'>
-				<tr>
-					<th>Name</th>
-					<th>Email</th>
-					<th>OS</th>
-					<th>Description</th>
-				</tr>";
-
-			foreach ($users as $user) 
-			{
-				$name = $user[0];
-				$email = $user[1];
-				$os = $user[2];
-				$description = $user[3];
-				
-				$result .="
-				<tr>
-					<td>$name</td>
-					<td>$email</td>
-					<td>$os</td>
-					<td>$description</td>
-				</tr>";
-			}
-
-		$result .= 
-		"	</table>
-		</div>";
-
-		return $result;
 	}
 ?>

@@ -5,7 +5,7 @@ import sqlite3
 from sqlite3 import Error
 
 helpFile = os.path.join(os.path.dirname(__file__),"help.txt")
-db_file = os.path.join(os.path.dirname(__file__),"queue.db")
+db_file = os.path.join(os.path.dirname(__file__),"hardware.db")
 
 errorArgument = "Arguments did not follow proper structure, please read the man using -m."
 
@@ -104,6 +104,8 @@ def insert_into_table(db, tableName):
 		print "SQLite command complete."
 	except Error as e:
 		print(e)
+        
+        
 
 def manual():
 	File = open(helpFile, 'r', 0)

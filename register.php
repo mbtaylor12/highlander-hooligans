@@ -7,41 +7,32 @@
 		<title>User Management System</title>
 	</head>
 	<body>
+        
+        <?php
+            
+            $jsonString = exec('python hardwareLoaner.py -s Users -all');
+		      $cards = jsonTo2DArray($jsonString);
+            
+            foreach ($cards as $card)
+		          {
+            
+                echo $card[0];
+            
+                }
+            
+            
+            
+                    
+        
+        
+        
+        ?>
 		<div id="main">
-			<?php
-			if(!empty($_POST['username']) && !empty($_POST['password']))
-			{
-				$username = mysql_real_escape_string($_POST['username']);
-				$password = md5(mysql_real_escape_string($_POST['password']));
-				$email = mysql_real_escape_string($_POST['email']);
+			
+          
+	           
 
-				$checkusername = mysql_query("SELECT * FROM users WHERE Username = '" . $username . "'");
-
-				if(mysql_num_rows($checkusername) == 1)
-				{
-					echo "<h1>Error</h1>";
-					echo "<p>Sorry, that username is taken. Please go back and try again.</p>";
-				}
-				else
-				{
-					$registerquery = mysql_query("INSERT INTO users (Username, Password, EmailAddress) VALUES('" . $username . "', '" . $password . "', '" . $email . "')");
-					if($registerquery)
-					{
-						echo "<h1>Success</h1>";
-						echo "<p>Your account was successfully created. Please <a href=\"index.php\">click here to login</a> . </p>";
-					}
-					else
-					{
-						echo "<h1>Error</h1>";
-						echo "<p>Sorry, your registration failed. Please go back and try again.</p>";
-					}
-				}
-			}
-			else
-			{
-				?>
-
-				<h1>Register</h1>
+				<h1>Register</h1> 
 				<p>Please enter your details below to register.</p>
 
 				<form method="post" action="register.php" name="registerForm" id="registerform">
@@ -53,9 +44,8 @@
 					</fieldset>
 				</form>
 
-				<?php
-			}
-			?>
+				
+			
 		</div>
 	</body>
 </html>

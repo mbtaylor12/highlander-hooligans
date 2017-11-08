@@ -1,0 +1,46 @@
+<html>
+    
+<head>
+    
+
+    
+    
+    
+    
+    </head>
+
+    <body>
+    
+        
+        Balance: <input type="number" id="input1">
+        Years: <input type="number" id="input2"><br>
+        <p id="output1"></p>
+        <button type="button" onclick="dothing()">do it nigga</button> 
+        
+           <script>
+    
+            function dothing(){
+        
+                var amount = document.getElementById("input1").value;
+                amount = parseInt(amount);
+                var years = document.getElementById("input2").value;
+                var amountmulti = .75;
+                amount57 = amount * amountmulti;
+                var final = amount + amount57;
+                final = final * years;
+        
+                document.getElementById("output1").innerHTML = "Amount After " + years + " years: " + final;
+                                
+                                }
+    
+    
+    
+    </script>
+    
+   
+    
+    </body>
+
+
+
+</html>

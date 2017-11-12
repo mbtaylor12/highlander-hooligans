@@ -1,4 +1,11 @@
-b<!DOCTYPE html>
+<!DOCTYPE html>
+<?php
+   session_start();
+   if (!isset($_SESSION['userlogin'])) 
+        header('Location: index.php');
+
+    
+?>
 <html>
 	<head>
 		 <?php require_once("master.php") ?>
@@ -20,4 +27,8 @@ b<!DOCTYPE html>
 
             
 	</body>
+    <div id="inputLeft">
+            </div>
+    <div id="inputRight">
+            </div>
 </html>

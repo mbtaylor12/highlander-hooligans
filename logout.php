@@ -1,2 +1,9 @@
-<?php include "base.php"; $_SESSION = array(); session_destroy(); ?>
-<meta http-equiv="refresh" content="0;index.php">
+<?php
+
+session_start();
+unset($_SESSION);
+session_destroy();
+session_write_close();
+header('Location: index.php');
+die;
+?>

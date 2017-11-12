@@ -1,36 +1,44 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<?php require_once("master.php") ?>
-		<link rel="stylesheet" href="styles.css">
-		<script src="script.js"></script>
-		<title>TAC Webapp Login</title>
-	</head>
-	<body>
-		<?php echo makeHeader(-1); ?>
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+$right = $_POST["input"];
+$hashed = password_hash($right, PASSWORD_BCRYPT);
 
 
-		<?php
-		/*
-		$myPDO = new PDO('sqlite:/Users/cam_tatum/Documents/ITEC/Itec370/NewPHP/hardware.db');
 
-		$userName = $_POST['user'];
-		$passWord = $_POST['pass'];
-
-		$userName = stripslashes($userName);
-		$passWord = stripslashes($passWord);
-
-		$query = "SELECT * FROM Users WHERE username='$userName' AND password='passWord'";
-		$result = mysql_query($query);
-		$count = mysql_num_rows($result);
-
-		if ($count==1)
-		{
-			echo 'worked';
-		}
-		*/
-		?>
+echo "Your password hashed: " . $hashed . "\n"; 
+echo "<br>";
 
 
-	</body>
-</html>
+
+
+
+echo "<br>";
+
+}
+
+
+echo "<form action='login.php' method='post'><input type='text' name='input'><br>";
+echo "<input type='submit' name='submit' value='submit'></form><br>";
+
+
+
+$db = new PDO('sqlite:/var/www/html/se1-v1/users.db');
+$result = $db->query('SELECT username FROM Users');
+echo "<table>";
+foreach($result as $row){
+    echo "<tr><td>".row['username']."</td></tr>";
+    
+    
+    
+
+    
+}
+  echo "</table>";  
+
+$db = null;
+
+?>
+
+

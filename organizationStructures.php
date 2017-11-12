@@ -8,7 +8,7 @@
 	*/
 	function hardware()
 	{
-			$jsonString = exec('python hardwareLoaner.py -s hardwareLoaners -all');
+        $jsonString = exec('python hardwareLoaner.py -s hardwareLoaners -all');
 		$cards = jsonTo2DArray($jsonString);
 		//Initializes the future 2D array.
 		$hardware = array();
@@ -53,7 +53,7 @@
 
     function accounts(){
         
-        $jsonString = exec('python hardwareLoaner.py -s Users -all');
+        $jsonString = exec('python users.py -s Users -all');
 		$cards = jsonTo2DArray($jsonString);
 		//Initializes the future 2D array.
 		$users = array();
@@ -173,17 +173,18 @@ function downloadsDrivers(){
 
     function queue(){  
         
-        $jsonString = exec('python queue.py -s waitingQueue -all');
+        $jsonString = exec('python queue_handler.py -s waiting');
 		$cards = jsonTo2DArray($jsonString);
 		//Initializes the future 2D array.
 		$users = array();
 		//Loops through user stored in 2D array
 		foreach ($cards as $card)
 		{
-			$namef = $card[0];
-			$email = $card[1];
-            $os = $card[2];
-            $description = $card[3];
+			$namef = $card[1];
+			$email = $card[2];
+            $placeinqueue = $card[0];
+            $os = $card[4];
+            $description = $card[5];
             
 			
 			$name = $namef;
@@ -192,7 +193,8 @@ function downloadsDrivers(){
 			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
             //The select option for choosing the user permissions may be changed up later -Dylan
             
-			$content = "<p class=''>Name: $namef</p>\n
+			$content = "<p class=''>Place in queue: $placeinqueue</p>\n
+                        <p class=''>Name: $namef</p>\n
                         <p class=''>Email: $email</p>\n
                         <p class=''>Operating system: $os</p>\n
                         <p class=''>Description of problem: $description</p>\n";

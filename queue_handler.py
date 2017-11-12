@@ -4,8 +4,8 @@ import json
 import sqlite3
 from sqlite3 import Error
 
-helpFile = os.path.join(os.path.dirname(__file__),"help.txt")
-db_file = os.path.join(os.path.dirname(__file__),"hardware.db")
+#helpFile = os.path.join(os.path.dirname(__file__),"help.txt")
+db_file = os.path.join(os.path.dirname(__file__),"queue.db")
 
 errorArgument = "Arguments did not follow proper structure, please read the man using -m."
 
@@ -53,6 +53,7 @@ def create_table(db, table_name, param_name, param_type):
 	"""
 	command = "CREATE TABLE " + table_name + " ("
 	for i in range(len(param_name)):
+		print i
 		command = command + param_name[i] + " " + param_type[i]
 		if i == (len(param_name)-1):
 			command = command + ");"
@@ -61,15 +62,19 @@ def create_table(db, table_name, param_name, param_type):
 			
 	execute_command(db, command)
 
-def create_hardware_loaners():
+def create_tables():
 	db = connect_database()
-	table_name = "hardwareLoaners"
-	param_name = ['assetName', 'assetDesc', 'manuFac', 'modeNum', 'serialNum', 'periphIncluded', 'roomNum', 'ticketStat']
-	param_type = ['TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'INTEGER']
+	table_wait = "waiting"
+	table_expr = "expired"
+	table_help = "help"
+	param_name = ['cus_num', 'name', 'username', 'ru_id', 'os_platform', 'description']
+	param_type = ['INTEGER PRIMARY KEY AUTOINCREMENT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT']
 	with db:
-		create_table(db, table_name, param_name, param_type)
+		create_table(db, table_wait, param_name, param_type)
+		create_table(db, table_expr, param_name, param_type)
+		create_table(db, table_help, param_name, param_type)
 	db.close()
-
+	
 def select_all(db, tableName):
 	""" Select all from table
 	:param db: database connection
@@ -96,8 +101,6 @@ def insert_into_table(db, tableName):
 			command = command + ");"
 		else:
 			command = command + ", "
-			
-	#command = "INSERT INTO tableName (paramName[1], paramName[2], ..., paramName[n]) VALUES (?, ?, ?...?)"
 	try:
 		c = db.cursor()
 		c.execute(command, paramValue)
@@ -105,13 +108,35 @@ def insert_into_table(db, tableName):
 		print "SQLite command complete."
 	except Error as e:
 		print(e)
-        
-        
+	
+def pop_queue(db, startTable, endTable):
+	""" Thia method acts as a pop function for a queue.
+	pop_queue will take in a database connection, a starting
+	taable and a end table. The starting table will contain 
+	the row to which it will be popped. The row popped will
+	then be moved into the end table. After moving the row,
+	the row will then be printed back to the client side.
+	
+	:param db: database connection
+	:param startTable: Table holding row to be popped.
+	:param endTable: Where the row from startTable will be moved.
+	:return: json dump of the row.
+	"""
+	c = db.cursor()
+	c.execute("SELECT * FROM " + startTable + " ORDER BY cus_num ASC LIMIT 1")
+	# Save values before deleting from startTable.
+	row = c.fetchall()
+	print row[0][0]
+	# Move row from startTable to endTable.
+	c.execute("INSERT INTO " + endTable + " SELECT * FROM " + startTable + " ORDER BY cus_num ASC LIMIT 1")
+	c.execute("DELETE FROM " + startTable + " WHERE cus_num = " + str(row[0][0])) 
+	
+	print json.dumps(row)
 
-def manual():
-	File = open(helpFile, 'r', 0)
-	for line in File:
-		print line
+# def manual():
+	# File = open(helpFile, 'r', 0)
+	# for line in File:
+		# print line
 
 def main():
 	"""
@@ -119,17 +144,10 @@ def main():
 	Reads arguments to determine the dynamic process.
 	"""
 	if sys.argv[1] == "-s":
-		if sys.argv[3] == "-all":
-			db = connect_database()
-			with db:
-				select_all(db, sys.argv[2])
-			db.close()
-		elif sys.argv[3] == "-w":
-			db = connect_database()
-			 #Where cause select
-			db.close()
-		else:
-			print errorArgument
+		db = connect_database()
+		with db:
+			select_all(db, sys.argv[2])
+		db.close()
 	elif sys.argv[1] == "-i":
 		for i in range(3, len(sys.argv)):
 			if sys.argv[i] == "-v":
@@ -138,17 +156,23 @@ def main():
 				break
 			else:
 				paramName.append(sys.argv[i])
-		
 		db = connect_database()
 		with db:
 			insert_into_table(db, sys.argv[2])
 		db.close()
 	elif sys.argv[1] == "-c":
 		create_hardware_loaners()
-	elif sys.argv[1] == "-m":
-		manual()
+	elif sys.argv[1] == "-p":
+		db = connect_database()
+		with db:
+			pop_queue(db, sys.argv[2], sys.argv[3])
+		db.close()
+	# elif sys.argv[1] == "-m":
+		# manual()
 	else:
 		print errorArgument
+		
 	
+if __name__ == "__main__":
+	main()
 	
-main()

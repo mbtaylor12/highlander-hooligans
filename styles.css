@@ -1,72 +1,89 @@
 #headerContainer 
 {
     position: absolute;
-    background: #808285;
-    height: 50pt;
-    left: 17%;
-    right: 17%;
-    border-radius: 10px;
+    background: #ffffdd;
+    left: 14%;
+    right: 14%;
+    border-radius: 20px;
     border: solid;
     border-color: black;
-    border-width: 5px;
-    top:33%
-
+    border-width: 3px;
+    top:40%;
+    
 }
+
+
+
 #colorbar
 {
     width:100%;
-    height: 18%;
+    height: 21%;
     top: 0%;
-    position: fixed;
+    position: auto;
     text-align:center;
     background: #c2011b;
     position: absolute;
-    margin-bottom: 70px;
-    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, .2);
+    margin-bottom: 80px;
+    box-shadow: 3px 6px 3px 1px rgba(0, 0, 0, .2);
     border-bottom: solid;
     border-color: black;
     border-width: 5px;
 
     }
-#headerLinks
-{
- margin-top: 1.5%;   
+#test{
+    position: relative;
+    top: 20%;
+    font-size: 330%;
+    margin-left: 5;
+
+        
 }
+
 .headerUnselected
 {
-    transition: 1s;
+    
+    transition: .5s;
     font-family: arial;
-    font-weight: 600;
 	font-size: 20pt;
 	color:black;
-    border-bottom: solid;
-    border-color: #c2011b;
-    border-width: 5px;
 	text-decoration: none;
-    padding: 22px 6px;
+    padding: 10px 10px;
+   
 
     
 }
+@media screen and (min-width: 480px) {
+    #leftsidebar {width: 200px; float: left;}
+    #main {margin-left: 216px;}
+}
 .headerSelected,.headerSelected:hover,.headerUnselected:hover
 {
-    transition: 1s;
-    padding: 10px 6px;
+    transition: .5s;
+    padding: 4px 10px;
     font-family: arial;
 	font-size: 20pt;
-    font-weight: 600;
 	border-bottom: solid;
 	color:black;
 	border-color: black;
-	border-width: 7px;
+	border-bottom-width: 4px;
 	text-decoration: none;
 }
 .card:hover
 {
 	background-color: #eaeaea !important;
 }
+#moduleTitle{
+    background-color: gray;
+    margin-top: 0px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 40px;
+    border-bottom: solid;
+    border-width: 1.5px;
+}
 .card
 {
-	height: 56px;
+	height: 40px;
 	width: 900px;
 	border-style: solid;
 	margin-left: auto;
@@ -133,23 +150,23 @@
 }
 
 #header{
-    margin-bottom: 70px;
+    margin-bottom: 80px;
     
 }
 #accountsbody{
-    background-color:#808285;
+    background-color:#082465;
 }
 
 #leftSide{
     float: left;
-    width: 49%;
+    width: 49.5%;
    
 
 }
 #rightSide
 {
     float: right;
-    width: 49%;
+    width: 49.5%;
     
 
 }
@@ -162,7 +179,7 @@
 .moduleCreate
 {
 
-    width:98%;
+    width:100%;
     color:black;
     text-align: center;
     margin-left: auto;
@@ -180,12 +197,16 @@
 .createModuleInput
 {
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
     border-color: black;
-    border-width: medium;
+    width: 90%;
+    border-width: auto;
     border:solid;
     background-color: white;
-    border-radius: 15px;
-    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, .2);
+    border-radius: 20px;
+    box-shadow: 3px 4px 4px 1px rgba(0, 0, 0, .2);
+    margin-top: 10px;
     
 }
 
@@ -198,12 +219,12 @@
 #centerContent
 {
     
-    left: 15%;
-    right: 14.5%;
-    top: 19%;
+    left: 19%;
+    right: 19.5%;
+    top: 25%;
     position: absolute;
     border-radius: 15px;
-    border-width: 5px;
+    border-width: 4px;
     text-align: center;
     
 }
@@ -213,24 +234,39 @@
     
     position: absolute;
     top: 21%;
-    width: 13%;
-    left: 8px;
+    height: 100%;
+    width: 18%;
     display: block;
+    background-color: #808285;
+    border-right: 5px solid black;
+
     
 }
 #inputRight
 {
     position: absolute;
-    width: 13%;
+    width: 18%;
+    height: 100%;
     top: 21%;
-    right:2px;
-    display:block;  
+    right:0%;
+    display: block;  
+    background-color: #808285;
+    border-left: 5px solid black;
+
+	
+}
+#about
+{
+	position: absolute;
+	display: block;
+	background-color: #FFFFE0;
+	 border-radius: 15px;
 }
 
 #img1
 {
-  background-color: black; 
-    margin-top: 5px;
+    position: relative;
+    top: 10px;
     margin-left: auto;
     margin-right: auto;
 
@@ -271,6 +307,223 @@ table
     margin-left: auto;
     border-radius: 15px;
 }
+#img1
+{
+  background-color: black; 
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+
+#loginHeader
+{
+    margin: auto;
+    height: 30px;
+    width: 80px;
+    display: block;
+}
+
+#headerImage
+{
+    text-align: center;
+}
+
+.center-img
+{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.responsive 
+{
+    border-radius: 10px;
+    width: 440px;
+    transform: translate(-40%, -50%);
+
+}
+
+img
+{
+    vertical-align: middle;
+    
+}
+
+#body
+{
+    margin-right: -15px;
+    margin-left: -15px;
+    color: white;
+    
+
+}
+#loginbody{    background-image: url("/se1-v1/images/background-resized.jpg");
+    background-size: 100% auto;
+     border-radius: 10px;
+    width: 460px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+        
+
+}
+
+#signInForm
+{
+    height: 300;
+}
+
+.signInForm input[type="text"]
+{
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.signInForm .classForm
+{
+    position: relative;
+    height: auto;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.classForm
+{
+    display: block;
+    width: 100%;
+    line-height: 1.43;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-block
+{
+    color: #003a99;
+    background-color: #eaeaea;
+    border-color: black;
+    width: 30%;
+    margin-left: 35%;
+    margin-right: auto;
+    font-weight: bold;
+}
+
+.btn-block
+{
+    display: block;
+}
+
+.btn-group-lg>.btn, .btn-lg
+{
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.4;
+    border-radius: 6px;
+}
+
+.btn
+{
+    margin-bottom: 0;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid;
+}
+
+.loginField
+{
+    margin: auto;
+    width: 325px; 
+    height: 390px; 
+    border: 2px solid black;
+    padding: 52px;
+    background-color: #b8020b;
+    color: white;
+    font-family: sans-serif;
+}
+
+#userInput
+{
+    width: 100%;
+    margin: 0% auto;
+    margin-top: 35px;
+}
+
+#passInput
+{
+    width: 100%;
+    margin: 0% auto;
+}
+
+.leftSideDiv
+{
+    float: left;
+}
+
+.centerRight
+{
+    float: right;
+    text-align: right;
+}
+
+.queueSignInSubmit
+{
+    text-align: center;
+    width: 25%;
+}
+
+#centerContentQueueSignIn
+{
+    
+    left: 19%;
+    right: 19.5%;
+    top: 100%;
+    position: absolute;
+    border-radius: 15px;
+    border-width: 4px;
+    text-align: center;
+    
+}
+
+.img1
+{
+    position: relative;
+    top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th, td 
+{
+    
+    border: 2px solid black;
+    text-align: center;
+    color: black;
+    background-color: white;
+    border-radius: 15px;
+    
+}
+
+
+table
+{
+    border: 2px solid black;
+    text-align: center;
+    left: 25%;
+    text-decoration: none;
+    color: black;
+    margin-bottom: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 15px;
+}
 
 input
 {
@@ -284,7 +537,16 @@ input[type="submit"]
     margin-left: auto;
     margin-right: auto;
 }
+#logoutlink{
+    float: left;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 100px;
+    text-decoration: none;
+    color: white;
+    background-color: #808285; 
+    margin: 5px;
 
-
-
+}
+	
 

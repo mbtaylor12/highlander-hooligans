@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<?php
+   session_start();
+   if (!isset($_SESSION['userlogin'])) 
+        header('Location: index.php');
+
+    
+?>
 <html>
 	<head>
 		<?php require_once("master.php") ?>
@@ -18,7 +25,7 @@
         <div id="header"><?php echo makeHeader(3); ?></div>
 	<div id='centerContent'>
         <div class='moduleCreate'>
-        <h1><b><u>Hardware Info</u></b></h1>
+        <h1 id='moduleTitle'><b>Hardware Info</b></h1>
         <?php echo hardware(); ?>
 
             	<?php
@@ -48,33 +55,35 @@
 	</div>
         </div>
         
-        <div id="inputLeft" class="createModuleInput">
+        <div id="inputLeft" >
         	
           
-
+            <div class="createModuleInput">
 		<form action='hardware_info.php' method='post' name='insert'>
-			Manufacturer: <input type='text' name='manufacturer'>
+            <b>Manufacturer</b> <br><input type='text' name='manufacturer'>
 			<br />
-			Model: <input type='text' name='model'>
+			<b>Model</b><br> <input type='text' name='model'>
 			<br />
-			Serial Number: <input type='text' name='serialNum'>
+			<b>Serial Number</b><br> <input type='text' name='serialNum'>
 			<br />
-			Asset Tag: <input type='text' name='assetTag'>
+			<b>Asset Tag </b><br><input type='text' name='assetTag'>
 			<br />
-			Asset Description: <input type='text' name='assetDesc'>
+			<b>Asset Description</b> <br><input type='text' name='assetDesc'>
 			<br />
-			Periphreals: <input type='text' name='periphreals'>
+			<b>Periphreals</b><br> <input type='text' name='periphreals'>
 			<br />
-			Ticket Status: <input type='text' name='ticketStatus'>
+			<b>Ticket Status </b><br><input type='text' name='ticketStatus'>
 			<br />
-			Location: <input type='text' name='location'>
+			<b>Location </b><br><input type='text' name='location'>
 			<br />
 			<input type='submit' name='Insert' value='submit' />
 		</form>
             </div>
+            </div>
           	
         
-        <div id="inputRight" class="createModuleInput">
+        <div id="inputRight">
+            <div class="createModuleInput">
         	
 
 		<form action='hardware_info.php' method='post' name='insert'>                 
@@ -84,8 +93,9 @@
 			<br />
 			<input type='submit' name='Insert' value='submit' />
 		</form>
-            </div>
-        
+            
+        </div>
+        </div>
         
 	</body>
 </html>

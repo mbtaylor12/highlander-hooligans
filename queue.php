@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<?php
+   session_start();
+   if (!isset($_SESSION['userlogin'])) 
+        header('Location: index.php');
+
+    
+?>
 <html>
 	<head>
 		 <?php require_once("master.php") ?>
@@ -26,13 +33,13 @@
 			 
 				$name = $_POST['name'];                     //early stages of a inserting into queue. Will not work yet.
 				$email = $_POST['email'];
+                $ruid = $_POST['ruid'];
 				$os = $_POST['os'];
 				$description = $_POST['description'];
 				
-				$execStatement = "python queue.py -i waitingQueue name email os description -v $name $email $os $description";
+				$execStatement = "python queue_handler.py -i help name username ru_id os_platform description -v $name $email $ruid $os $description";
 
-
-				exec($execStatement);
+                exec($execStatement);
                 
                 echo '<meta http-equiv="Refresh" content="0;' . $page . '">';
 
@@ -42,12 +49,14 @@
             <div id="rightSide">
             
             <div class="moduleCreate">
-                <h1><b><u>Enter Help Queue</u></b></h1>
+                <h1 id="moduleTitle"><b>Enter Help Queue</b></h1>
             <form action='queue.php' method='post' name='insert'>
 			Name:<br> <input type='text' name='name'>
 			<br />
 			Email: <br><input type='text' name='email'>              
 			<br />
+            RU ID: <br><input type='text' name='ruid'>              
+            <br />
 			Operating System:<br> <input type='text' name='os'>
 			<br />
 			Problem Description:<br> <input type='text' name='description'>
@@ -62,7 +71,7 @@
             <div id="leftSide">
                 
                 <div class="moduleCreate">
-                                    <h1><b><u>Current Queue</u></b></h1>
+                                    <h1 id="moduleTitle"><b>Current Queue</b></h1>
 
                                     <?php echo queue(); ?>
                    
@@ -75,4 +84,8 @@
 
     
 	</body>
+    <div id="inputLeft">
+            </div>
+    <div id="inputRight">
+            </div>
 </html>

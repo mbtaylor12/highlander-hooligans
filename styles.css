@@ -360,16 +360,16 @@ img
     
 
 }
-#loginbody{    background-image: url("/se1-v1/images/background-resized.jpg");
+#loginbody
+{
+    background-image: url("/images/background-resized.jpg");
     background-size: 100% auto;
-     border-radius: 10px;
+    border-radius: 10px;
     width: 460px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-        
-
 }
 
 #signInForm

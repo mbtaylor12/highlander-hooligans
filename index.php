@@ -11,7 +11,7 @@
 				<form action="index.php" method="POST" id="signInForm" class="signInForm">
 				<div class="loginField">
                     <div id="loginHeader">
-					<img class="responsive center-img" src="/se1-v1/images/login-header.png" />
+					<img class="responsive center-img" src="/images/login-header.png" />
 			         </div>
 					<input type="text" name="user" placeholder="Username" class="classForm" id="userInput" />
 					<br />

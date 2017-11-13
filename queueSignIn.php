@@ -25,7 +25,7 @@
             <center>
             
             	<div class="moduleCreate">
-            	    <h1 id="moduleTitle"><b>Enter Help Queue</b></h1>
+            	    <h1 id="moduleTitle"><b>Request Assistance</b></h1>
            			<form action='confirmationPage.php' method='post' name='insert'>
 						Name:<br> <input type='text' name='name'>
 						<br />

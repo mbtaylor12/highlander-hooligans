@@ -171,7 +171,7 @@ function downloadsDrivers(){
 
 //90% working queue card function. Card will not expand
 
-    function queue(){  
+    function queueWaiting(){  
         
         $jsonString = exec('python queue_handler.py -s waiting');
 		$cards = jsonTo2DArray($jsonString);
@@ -209,6 +209,117 @@ function downloadsDrivers(){
         
     }
 
+ function queueHelp(){  
+        
+        $jsonString = exec('python queue_handler.py -s help');
+		$cards = jsonTo2DArray($jsonString);
+		//Initializes the future 2D array.
+		$users = array();
+		//Loops through user stored in 2D array
+		foreach ($cards as $card)
+		{
+			$namef = $card[1];
+			$email = $card[2];
+            $placeinqueue = $card[0];
+            $os = $card[4];
+            $description = $card[5];
+            
+			
+			$name = $namef;
+            
+			//Creates the body of the card view in the layout I have chosen. 
+			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
+            //The select option for choosing the user permissions may be changed up later -Dylan
+            
+			$content = "<p class=''>Place in queue: $placeinqueue</p>\n
+                        <p class=''>Name: $namef</p>\n
+                        <p class=''>Email: $email</p>\n
+                        <p class=''>Operating system: $os</p>\n
+                        <p class=''>Description of problem: $description</p>\n";
+            
+			//Assigns key-value pairs for the name and content.
+			$tempArray = array ("name" => $name, "content"=> $content);
+			//Pushes the $tempArray onto the $user array, creating a 2D array.
+			array_push($users, $tempArray);
+		}
+		return createCollapsibleView($users);
+        
+        
+    }
+ function queueHelped(){  
+        
+        $jsonString = exec('python queue_handler.py -s helped');
+		$cards = jsonTo2DArray($jsonString);
+		//Initializes the future 2D array.
+		$users = array();
+		//Loops through user stored in 2D array
+		foreach ($cards as $card)
+		{
+			$namef = $card[1];
+			$email = $card[2];
+            $placeinqueue = $card[0];
+            $os = $card[4];
+            $description = $card[5];
+            
+			
+			$name = $namef;
+            
+			//Creates the body of the card view in the layout I have chosen. 
+			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
+            //The select option for choosing the user permissions may be changed up later -Dylan
+            
+			$content = "<p class=''>Place in queue: $placeinqueue</p>\n
+                        <p class=''>Name: $namef</p>\n
+                        <p class=''>Email: $email</p>\n
+                        <p class=''>Operating system: $os</p>\n
+                        <p class=''>Description of problem: $description</p>\n";
+            
+			//Assigns key-value pairs for the name and content.
+			$tempArray = array ("name" => $name, "content"=> $content);
+			//Pushes the $tempArray onto the $user array, creating a 2D array.
+			array_push($users, $tempArray);
+		}
+		return createCollapsibleView($users);
+        
+        
+    }
+ function queueExpired(){  
+        
+        $jsonString = exec('python queue_handler.py -s expired');
+		$cards = jsonTo2DArray($jsonString);
+		//Initializes the future 2D array.
+		$users = array();
+		//Loops through user stored in 2D array
+		foreach ($cards as $card)
+		{
+			$namef = $card[1];
+			$email = $card[2];
+            $placeinqueue = $card[0];
+            $os = $card[4];
+            $description = $card[5];
+            
+			
+			$name = $namef;
+            
+			//Creates the body of the card view in the layout I have chosen. 
+			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
+            //The select option for choosing the user permissions may be changed up later -Dylan
+            
+			$content = "<p class=''>Place in queue: $placeinqueue</p>\n
+                        <p class=''>Name: $namef</p>\n
+                        <p class=''>Email: $email</p>\n
+                        <p class=''>Operating system: $os</p>\n
+                        <p class=''>Description of problem: $description</p>\n";
+            
+			//Assigns key-value pairs for the name and content.
+			$tempArray = array ("name" => $name, "content"=> $content);
+			//Pushes the $tempArray onto the $user array, creating a 2D array.
+			array_push($users, $tempArray);
+		}
+		return createCollapsibleView($users);
+        
+        
+    }
    
         
     

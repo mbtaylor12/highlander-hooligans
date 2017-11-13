@@ -37,7 +37,7 @@
 				$os = $_POST['os'];
 				$description = $_POST['description'];
 				
-				$execStatement = "python queue_handler.py -i help name username ru_id os_platform description -v $name $email $ruid $os $description";
+				$execStatement = "python queue_handler.py -i $name $email $ruid $os $description";
 
                 exec($execStatement);
                 
@@ -71,9 +71,30 @@
             <div id="leftSide">
                 
                 <div class="moduleCreate">
-                                    <h1 id="moduleTitle"><b>Current Queue</b></h1>
+                                    <h1 id="moduleTitle"><b>Waiting Queue</b></h1>
 
-                                    <?php echo queue(); ?>
+                                    <?php echo queueWaiting(); ?>
+                   
+                </div>
+                <br>
+                <div class="moduleCreate">
+                                    <h1 id="moduleTitle"><b>Current Assistance</b></h1>
+
+                                    <?php echo queueHelp(); ?>
+                   
+                </div>
+                <br>
+                <div class="moduleCreate">
+                                    <h1 id="moduleTitle"><b>Past Assistance</b></h1>
+
+                                    <?php echo queueHelped(); ?>
+                   
+                </div>
+                <br>
+                <div class="moduleCreate">
+                                    <h1 id="moduleTitle"><b>Expired Queue</b></h1>
+
+                                    <?php echo queueExpired(); ?>
                    
                 </div>
                 </div>
@@ -84,8 +105,19 @@
 
     
 	</body>
-    <div id="inputLeft">
-            </div>
-    <div id="inputRight">
-            </div>
+     <div id="inputRight">
+            <div class="createModuleInput">
+        	
+
+		<form action='hardware_info.php' method='post' name='insert'>                 
+			Search key: <input type='text' name='manufacturer'>
+			<br />
+			Search by: <input type='text' name='model'>
+			<br />
+			<input type='submit' name='Insert' value='submit' />
+		</form>
+            
+        </div>
+        </div>
+    
 </html>

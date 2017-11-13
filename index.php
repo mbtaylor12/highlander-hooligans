@@ -15,7 +15,7 @@
 			         </div>
 					<input type="text" name="user" placeholder="Username" class="classForm" id="userInput" />
 					<br />
-					<input type="text" name="pass" placeholder="Password" class="classForm" id="passInput" />
+					<input type="password" name="pass" placeholder="Password" class="classForm" id="passInput" />
 					<br />
 					<button class="btn btn-lg btn-primary btn-block" type="submit" name="_eventId_proceed" id="_eventId_proceed">Login</button>
                     

@@ -27,7 +27,7 @@
                         <div id="rightSide">  <!-- content right side div -->
 
 
-            <div class='moduleCreate'>
+            <div class='downloadsUtilities'>
                 		<h1 id='moduleTitle'><b>Downloads
 Utilities</b></h1>
                 <?php echo downloadsUtilities(); ?>
@@ -38,10 +38,10 @@ Utilities</b></h1>
                         <div id="leftSide">     <!-- content left side div -->
             
             
-            <div class="moduleCreate">
+            <div class="downloadsCenterContent">
                 
             <h1 id="moduleTitle"><b>Drivers and Guides</b></h1>
-                <p>This table is produced by looping through the folder and displays every file as a download link.
+                <p class="downloadsPtag">This table is produced by looping through the folder and displays every file as a download link.
                     It is dynamic depending on how many files are in the folder!
                 </p>
                 
@@ -121,6 +121,6 @@ Utilities</b></h1>
             
 
         ?>
-    <div id="inputRight"></div>
+    <!-- <div id="inputRight"></div> -->
     
 </html>

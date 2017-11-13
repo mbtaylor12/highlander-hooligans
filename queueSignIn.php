@@ -13,7 +13,7 @@
 	</head>
 
             <div id="header">
-            	<div id='colorbar'><img class='img1' src='./images/radfordlogo2.gif' alt='logo' ><div id='headerContainer'>
+            	<div id='colorbar'><img class='queueSignInImageHeader' src='./images/radfordlogo2.gif' alt='logo' ><div class='queueSignInHeader'>
             </div>
 
 	<body id="accountsbody">
@@ -24,7 +24,7 @@
             
             <center>
             
-            	<div class="moduleCreate">
+            	<div class="queueSignIn">
             	    <h1 id="moduleTitle"><b>Request Assistance</b></h1>
            			<form action='confirmationPage.php' method='post' name='insert'>
 						Name:<br> <input type='text' name='name'>

@@ -24,7 +24,7 @@
 	<body id='accountsbody'>
         <div id="header"><?php echo makeHeader(3); ?></div>
 	<div id='centerContent'>
-        <div class='moduleCreate'>
+        <div class='hardwareInfoCenterContent'>
         <h1 id='moduleTitle'><b>Hardware Info</b></h1>
         <?php echo hardware(); ?>
 

@@ -27,11 +27,21 @@
             
             <div id="rightSide"> <!-- content right side div -->
                 
-       	    <div class="moduleCreate">
+       	    <div class="accountsUserAccounts">
                 <h1><b><u>User Accounts</u></b></h1>
                 <?php echo accounts(); ?></div>
             
-             <div class="moduleCreate">
+             
+            </div>
+            
+            <div id="leftSide">     <!-- content left side div -->
+                
+             <div class='accountsUtilities'>
+                <h1><b><u>Utilities</u></b></h1>
+                    <?php echo downloadsUtilities(); ?>
+                </div>
+                 
+               <div class="accountsDriversAndGuides">
             <h1><b><u>Drivers and Guides</u></b></h1>
                 <p>This table is produced by looping through the folder and displays every file as a download link.
                     It is dynamic depending on how many files are in the folder!
@@ -41,16 +51,7 @@
 
                            
             </div>
-            </div>
             
-            <div id="leftSide">     <!-- content left side div -->
-                
-             <div class='moduleCreate'>
-                <h1><b><u>Utilities</u></b></h1>
-                    <?php echo downloadsUtilities(); ?>
-                </div>
-                 
-               
             </div>
             
             </div>   

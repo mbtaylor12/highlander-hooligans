@@ -27,8 +27,9 @@
 
             
 	</body>
-    <div id="inputLeft">
+<!--     <div id="inputLeft">
             </div>
     <div id="inputRight">
             </div>
+-->
 </html>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,7 +9,7 @@
 	</head>
 	<body  id="loginbody" style="background-repeat: no-repeat;" link="#ffffff" vlink="#ffffff" alink="#003a99">
 			
-				<form action="index.php" method="POST" id="signInForm" class="signInForm">
+				<form action="loginManager.php" method="POST" id="signInForm" class="signInForm">
 				<div class="loginField">
                     <div id="loginHeader">
 					<img class="responsive center-img" src="/images/login-header.png" />
@@ -35,63 +36,3 @@
 		
 	</body>
 </html>
-<?php 
-
-       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $usernamelogin = $_POST["user"];
-        $passlogin = $_POST["pass"];
-
-        $jsonString = exec('python users.py -s Users -all');
-		$cards = jsonTo2DArray($jsonString);
-		//Initializes the future 2D array.
-		$users = array();
-		//Loops through user stored in 2D array
-		foreach ($cards as $card)
-		{
-			$user = $card[0];
-			$password = $card[1];
-            $permission = $card[2];
-
-            
-			
-			if ($usernamelogin == $user) 
-                {
-                if(password_verify($passlogin, $password))
-                {
-                   
-         
-                    echo "success";
-                    session_start();
-                    $_SESSION['userlogin'] = $user;
-                    $_SESSION['idlevel'] = $permission;
-                    
-                    
-                    header('Location: hardware_info.php');
-
-                }
-                
-                else {
-                echo "<b>Username or Password incorrect</b>";
-                }
-            
-                
-            
-       
-                }
-       
-                }
-       }
-           
-        
-    function jsonTo2DArray($jsonString)
-	{
-		$jsonArray = json_decode($jsonString, true);
-		return $jsonArray;
-	}
-
-
-
-   
-
-
-?>

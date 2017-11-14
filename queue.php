@@ -1,7 +1,8 @@
-<!DOCTYPE html>
 <?php
-   session_start();
+          session_start();
+
    if (!isset($_SESSION['userlogin'])) 
+
         header('Location: index.php');
 
     
@@ -91,12 +92,7 @@
                    
                 </div>
                 <br>
-                <div class="moduleCreate">
-                                    <h1 id="moduleTitle"><b>Expired Queue</b></h1>
-
-                                    <?php echo queueExpired(); ?>
-                   
-                </div>
+             
                 </div>
             
                  
@@ -109,7 +105,7 @@
             <div class="createModuleInput">
         	
 
-		<form action='hardware_info.php' method='post' name='insert'>                 
+		<form action='#' method='post' name='insert'>                 
 			Search key: <input type='text' name='manufacturer'>
 			<br />
 			Search by: <input type='text' name='model'>
@@ -119,5 +115,25 @@
             
         </div>
         </div>
+    <div id="inputLeft">
+    <div class="createModuleInput">
+        	
+            <br>
+        <center>Move first user out of waiting queue.</center>
+		<form action='popqueue.php' method='post' name='insert'>                 
+			
+			<input type='submit' value='Pop' />
+		</form>
+        <center>Refresh queue and backup</center>
+        <form action='refeshQueue.php' method='post' name='insert'>                 
+			
+			<input type='submit' value='Refresh' />
+		</form>
+            
+        </div>
+        </div>
+    
+    
+    
     
 </html>

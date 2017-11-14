@@ -13,7 +13,7 @@
 	</head>
 
             <div id="header">
-            	<div id='colorbar'><img class='queueSignInImageHeader' src='./images/radfordlogo2.gif' alt='logo' ><div class='queueSignInHeader'>
+            	<div id='colorbar'><img class='img1' src='./images/radfordlogo2.gif' alt='logo' ><div id='headerContainer'>
             </div>
 
 	<body id="accountsbody">
@@ -24,14 +24,14 @@
             
             <center>
             
-            	<div class="queueSignIn">
-            	    <h1 id="moduleTitle"><b>Request Assistance</b></h1>
-           			<form action='confirmationPage.php' method='post' name='insert'>
+            	<div class="moduleCreate">
+            	    <h1 id="moduleTitle"><b>Enter Help Queue</b></h1>
+           			<form action='queueSignIn.php' method='post' name='insert'>
 						Name:<br> <input type='text' name='name'>
 						<br />
 						Email: <br><input type='text' name='email'>         
 						<br />
-            			RU ID: <br><input type='text' name='ru_id'>
+            			RU ID: <br><input type='text' name='ruid'>
             			<br>
 						Operating System:<br> <input type='text' name='os'>
 						<br />
@@ -44,6 +44,25 @@
             </center> 
                 
         </div>
+        <?php
+            
+			if ($_SERVER['REQUEST_METHOD'] == 'POST')
+			{
+			 
+				$name = $_POST['name'];                     //early stages of a inserting into queue. Will not work yet.
+				$email = $_POST['email'];
+                $ruid = $_POST['ruid'];
+				$os = $_POST['os'];
+				$description = $_POST['description'];
+				
+				$execStatement = "python queue_handler.py -i $name $email $ruid $os $description";
+
+                exec($execStatement);
+                
+                echo '<meta http-equiv="Refresh" content="0;' . $page . '">';
+
+			}
+		?>
 
     
 	</body>

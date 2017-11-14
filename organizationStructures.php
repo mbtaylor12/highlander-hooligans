@@ -178,8 +178,10 @@ function downloadsDrivers(){
 		//Initializes the future 2D array.
 		$users = array();
 		//Loops through user stored in 2D array
+        $count = 1;
 		foreach ($cards as $card)
 		{
+            
 			$namef = $card[1];
 			$email = $card[2];
             $placeinqueue = $card[0];
@@ -193,7 +195,8 @@ function downloadsDrivers(){
 			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
             //The select option for choosing the user permissions may be changed up later -Dylan
             
-			$content = "<p class=''>Place in queue: $placeinqueue</p>\n
+			$content = "<p class=''>Place in Queue: $count</p>\n
+                        <p class=''>Customer Number: $placeinqueue</p>\n
                         <p class=''>Name: $namef</p>\n
                         <p class=''>Email: $email</p>\n
                         <p class=''>Operating system: $os</p>\n
@@ -203,6 +206,7 @@ function downloadsDrivers(){
 			$tempArray = array ("name" => $name, "content"=> $content);
 			//Pushes the $tempArray onto the $user array, creating a 2D array.
 			array_push($users, $tempArray);
+            $count = $count + 1;
 		}
 		return createCollapsibleView($users);
         
@@ -231,11 +235,13 @@ function downloadsDrivers(){
 			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
             //The select option for choosing the user permissions may be changed up later -Dylan
             
-			$content = "<p class=''>Place in queue: $placeinqueue</p>\n
+			$content = "<form action='pophelp.php' method='post'>
+                        <p class=''>Place in queue: <input name='test' type='text' value='$placeinqueue'></p>\n
                         <p class=''>Name: $namef</p>\n
                         <p class=''>Email: $email</p>\n
                         <p class=''>Operating system: $os</p>\n
-                        <p class=''>Description of problem: $description</p>\n";
+                        <p class=''>Description of problem: $description</p>\n
+                        <input type='submit' value='Remove'></form>";
             
 			//Assigns key-value pairs for the name and content.
 			$tempArray = array ("name" => $name, "content"=> $content);
@@ -283,45 +289,9 @@ function downloadsDrivers(){
         
         
     }
- function queueExpired(){  
-        
-        $jsonString = exec('python queue_handler.py -s expired');
-		$cards = jsonTo2DArray($jsonString);
-		//Initializes the future 2D array.
-		$users = array();
-		//Loops through user stored in 2D array
-		foreach ($cards as $card)
-		{
-			$namef = $card[1];
-			$email = $card[2];
-            $placeinqueue = $card[0];
-            $os = $card[4];
-            $description = $card[5];
-            
-			
-			$name = $namef;
-            
-			//Creates the body of the card view in the layout I have chosen. 
-			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
-            //The select option for choosing the user permissions may be changed up later -Dylan
-            
-			$content = "<p class=''>Place in queue: $placeinqueue</p>\n
-                        <p class=''>Name: $namef</p>\n
-                        <p class=''>Email: $email</p>\n
-                        <p class=''>Operating system: $os</p>\n
-                        <p class=''>Description of problem: $description</p>\n";
-            
-			//Assigns key-value pairs for the name and content.
-			$tempArray = array ("name" => $name, "content"=> $content);
-			//Pushes the $tempArray onto the $user array, creating a 2D array.
-			array_push($users, $tempArray);
-		}
-		return createCollapsibleView($users);
-        
-        
-    }
+
    
-        
+       
     
     
 	function createCollapsibleView(array $cards)

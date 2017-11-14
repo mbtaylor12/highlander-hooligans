@@ -1,7 +1,8 @@
-<!DOCTYPE html>
 <?php
-   session_start();
+          session_start();
+
    if (!isset($_SESSION['userlogin'])) 
+
         header('Location: index.php');
 
     
@@ -22,7 +23,7 @@
         <div id="header"><?php echo makeHeader(5); ?></div>
        
         <div id="centerContent">
-             <div class="aboutCenterContent">
+             <div class="moduleCreate">
             <p><b><center>This product is created by Fall 2017 Software Engineering team Highlander Hooligans. This product is considered to be created as an open source technology. Anyone, with permission from the Technology Assistance Center, can make changes or upgrades to this system. Please consult the user manual for more details and guides on how to use this system.</center></b></p>
             
         <br>

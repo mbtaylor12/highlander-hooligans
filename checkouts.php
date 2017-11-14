@@ -1,7 +1,8 @@
-<!DOCTYPE html>
 <?php
-   session_start();
+          session_start();
+
    if (!isset($_SESSION['userlogin'])) 
+
         header('Location: index.php');
 
     
@@ -27,9 +28,8 @@
 
             
 	</body>
-<!--     <div id="inputLeft">
+    <div id="inputLeft">
             </div>
     <div id="inputRight">
             </div>
--->
 </html>

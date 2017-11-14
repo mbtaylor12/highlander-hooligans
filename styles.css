@@ -8,7 +8,8 @@
     border: solid;
     border-color: black;
     border-width: 3px;
-    top:40%;
+    top:45%;
+    font-size: 7pt;
     
 }
 
@@ -19,7 +20,7 @@
     width:100%;
     height: 21%;
     top: 0%;
-    position: auto;
+    position: fixed;
     text-align:center;
     background: #c2011b;
     position: absolute;
@@ -44,7 +45,7 @@
     
     transition: .5s;
     font-family: arial;
-	font-size: 20pt;
+	font-size: 10px;
 	color:black;
 	text-decoration: none;
     padding: 10px 10px;
@@ -61,11 +62,11 @@
     transition: .5s;
     padding: 4px 10px;
     font-family: arial;
-	font-size: 20pt;
+	font-size: 10pt;
 	border-bottom: solid;
 	color:black;
 	border-color: black;
-	border-bottom-width: 4px;
+	border-bottom-width: 10px;
 	text-decoration: none;
 }
 .card:hover
@@ -186,7 +187,6 @@
     margin-right: auto;
     border: 5px solid black;
     margin-bottom:5pt;
-    margin-top: 20%;
     
     border-radius: 15px;
     background-color: white;
@@ -240,9 +240,7 @@
     display: block;
     background-color: #808285;
     border-right: 5px solid black;
-    border-top: 5px solid black;
-    margin-top: 5%;
-    border-radius: 5px;
+
     
 }
 #inputRight
@@ -255,9 +253,6 @@
     display: block;  
     background-color: #808285;
     border-left: 5px solid black;
-    border-top: 5px solid black;
-    margin-top: 5%;
-    border-radius: 5px;
 
 	
 }
@@ -366,16 +361,16 @@ img
     
 
 }
-#loginbody
-{
-    background-image: url("/images/background-resized.jpg");
+#loginbody{    background-image: url("/images/background-resized.jpg");
     background-size: 100% auto;
-    border-radius: 10px;
+     border-radius: 10px;
     width: 460px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+        
+
 }
 
 #signInForm
@@ -504,162 +499,6 @@ img
     top: 10%;
     margin-left: auto;
     margin-right: auto;
-}
-
-.downloadsPtag
-{
-    margin: 0 0 10px;
-    margin-top: 15px;
-}
-
-.downloadsCenterContent
-{
-    width:100%;
-    color:black;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    border: 5px solid black;
-    margin-bottom:5pt;
-    margin-top: 10%;
-    
-    border-radius: 15px;
-    background-color: white;
-    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, .2);
-}
-
-.downloadsUtilities
-{
-     width:100%;
-    color:black;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    border: 5px solid black;
-    margin-bottom:5pt;
-    margin-top: 25%;
-    
-    border-radius: 15px;
-    background-color: white;
-    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, .2);
-}
-
-.hardwareInfoCenterContent
-{
-    width:100%;
-    color:black;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    border: 5px solid black;
-    margin-bottom:5pt;
-    margin-top: 4%;
-    
-    border-radius: 15px;
-    background-color: white;
-    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, .2);
-}
-
-.accountsUserAccounts
-{
-    width:100%;
-    color:black;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    border: 5px solid black;
-    margin-bottom:5pt;
-    margin-top: 8%;
-    
-    border-radius: 15px;
-    background-color: white;
-    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, .2);
-}
-
-.accountsUtilities
-{
-    width:100%;
-    color:black;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    border: 5px solid black;
-    margin-bottom:5pt;
-    margin-top: 8%;
-    
-    border-radius: 15px;
-    background-color: white;
-    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, .2);
-}
-
-.accountsDriversAndGuides
-{
-    width:100%;
-    color:black;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    border: 5px solid black;
-    margin-bottom:5pt;
-    margin-top: 10%;
-    
-    border-radius: 15px;
-    background-color: white;
-    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, .2);
-}
-
-.aboutCenterContent
-{
-    width:100%;
-    color:black;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    border: 5px solid black;
-    margin-bottom:5pt;
-    margin-top: 4%;
-    
-    border-radius: 15px;
-    background-color: white;
-    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, .2);
-}
-
-.queueSignIn
-{
-    width:100%;
-    color:black;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    border: 5px solid black;
-    margin-bottom:5pt;
-    margin-top: 10%;
-    
-    border-radius: 15px;
-    background-color: white;
-    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, .2);
-
-}
-
-.queueSignInImageHeader
-{
-    position: relative;
-    top: 30%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.queueSignInHeader
-{
-    position: absolute;
-    background: #ffffdd;
-    left: 1%;
-    right: 1%;
-    border-radius: 20px;
-    border: solid;
-    border-color: black;
-    border-width: 3px;
-    top:70%;
 }
 
 th, td 

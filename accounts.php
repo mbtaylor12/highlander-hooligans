@@ -1,6 +1,13 @@
-<!DOCTYPE html>
+<?php
+          session_start();
 
+   if (!isset($_SESSION['userlogin'])){
+
+        header('Location: index.php');
+       }
    
+    
+?>
 <html>
 	<head>
         
@@ -25,33 +32,15 @@
         <div id="centerContent">
             
             
-            <div id="rightSide"> <!-- content right side div -->
+            <div id="centerContent"> <!-- content right side div -->
                 
-       	    <div class="accountsUserAccounts">
-                <h1><b><u>User Accounts</u></b></h1>
+       	    <div class="moduleCreate">
+        <h1 id='moduleTitle'><b>User Accounts</b></h1>
                 <?php echo accounts(); ?></div>
             
-             
-            </div>
-            
-            <div id="leftSide">     <!-- content left side div -->
-                
-             <div class='accountsUtilities'>
-                <h1><b><u>Utilities</u></b></h1>
-                    <?php echo downloadsUtilities(); ?>
-                </div>
+       
                  
-               <div class="accountsDriversAndGuides">
-            <h1><b><u>Drivers and Guides</u></b></h1>
-                <p>This table is produced by looping through the folder and displays every file as a download link.
-                    It is dynamic depending on how many files are in the folder!
-                </p>
-                
-                        <?php echo getfilesDownloads(); ?>
-
-                           
-            </div>
-            
+               
             </div>
             
             </div>   

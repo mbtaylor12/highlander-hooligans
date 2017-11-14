@@ -1,7 +1,8 @@
-<!DOCTYPE html>
 <?php
-   session_start();
+          session_start();
+
    if (!isset($_SESSION['userlogin'])) 
+
         header('Location: index.php');
 
     
@@ -24,7 +25,7 @@
 	<body id='accountsbody'>
         <div id="header"><?php echo makeHeader(3); ?></div>
 	<div id='centerContent'>
-        <div class='hardwareInfoCenterContent'>
+        <div class='moduleCreate'>
         <h1 id='moduleTitle'><b>Hardware Info</b></h1>
         <?php echo hardware(); ?>
 

@@ -1,7 +1,8 @@
-<!DOCTYPE html>
 <?php
-   session_start();
+          session_start();
+
    if (!isset($_SESSION['userlogin'])) 
+
         header('Location: index.php');
 
     
@@ -27,7 +28,7 @@
                         <div id="rightSide">  <!-- content right side div -->
 
 
-            <div class='downloadsUtilities'>
+            <div class='moduleCreate'>
                 		<h1 id='moduleTitle'><b>Downloads
 Utilities</b></h1>
                 <?php echo downloadsUtilities(); ?>
@@ -38,10 +39,10 @@ Utilities</b></h1>
                         <div id="leftSide">     <!-- content left side div -->
             
             
-            <div class="downloadsCenterContent">
+            <div class="moduleCreate">
                 
             <h1 id="moduleTitle"><b>Drivers and Guides</b></h1>
-                <p class="downloadsPtag">This table is produced by looping through the folder and displays every file as a download link.
+                <p>This table is produced by looping through the folder and displays every file as a download link.
                     It is dynamic depending on how many files are in the folder!
                 </p>
                 
@@ -92,7 +93,7 @@ Utilities</b></h1>
       
       
       
-        $path = "downloads/";
+        $path = "/downloads";
         $path = $path . basename( $_FILES['uploaded_file']['name']);
         if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $path))             //this functionality will need to be advanced in the
                                                                                         //future for security.
@@ -112,7 +113,7 @@ Utilities</b></h1>
                     echo '</script>';
                 
                 }
-                    echo '<meta http-equiv="Refresh" content="0;' . $page . '">';
+                    echo '';
 
                     
             }
@@ -121,6 +122,6 @@ Utilities</b></h1>
             
 
         ?>
-    <!-- <div id="inputRight"></div> -->
+    <div id="inputRight"></div>
     
 </html>

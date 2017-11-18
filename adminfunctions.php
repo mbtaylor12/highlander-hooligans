@@ -14,6 +14,7 @@
                 
                     foreach($files as $file){               //creates table if file name is not in dot array
                         if(!in_array($file, $dot))
+                               
                             
                             echo '<tr><td><a href = "./downloads/'.$file.'" download>'.$file.'</a></td></tr>';
                 
@@ -26,21 +27,21 @@
     //This fucntion recursively list the files within the ./images directory
 
 
-     function getfilesImgs()
+     function getfilesGuides()
                         {
                 
-                $files = scandir('./images');
+                $files = scandir('./guides');
                 $dot = array(".","..",".DS_Store","._.DS_Store"); //stuff we don't want listed. Not sure why it list these.
                 
                 sort($files); // this does the sorting
                 
                 echo'<table>';
-                echo '<tr><td><b>Files currently in "./images " directory.</b></td></tr>';
+                echo '<tr><td><b>Drivers and Guides</b></td></tr>';
                 
                     foreach($files as $file){               //creates table if file name is not in dot array
                         if(!in_array($file, $dot))
                             
-                            echo '<tr><td><a href = "./downloads/'.$file.'" download>'.$file.'</a></td></tr>';
+                            echo '<tr><td><a href = "./guides/'.$file.'" download>'.$file.'</a></td></tr>';
                 
                                             }
                 echo '</table>';
@@ -48,6 +49,92 @@
       
         
                         }
-    
 
-?>
+    function databaseSize(){
+        
+        
+                $total = 0;
+                echo "<b>Database Analytics</b>";
+
+                echo "<table id='databasesize'>";
+                echo "<tr><td><b>Database</b></td><td><b>Size</b></td></tr>";
+                $file = 'storage/hardware.db';
+                $filesize = filesize($file); // bytes
+                $filesize = round($filesize / 1024, 1); // megabytes with 1 digit
+                $total = $total + $filesize;
+                echo "<tr><td>Hardware</td><td> $filesize KB.</td></tr><br>";
+                $file = 'storage/users.db';
+                $filesize = filesize($file); // bytes
+                $filesize = round($filesize / 1024, 1); // megabytes with 1 digit
+                $total = $total + $filesize;
+
+                echo "<tr><td>Users</td><td> $filesize KB.</td></tr><br>";
+                $file = 'storage/printers.db';
+                $filesize = filesize($file); // bytes
+                $filesize = round($filesize / 1024, 1); // megabytes with 1 digit
+                $total = $total + $filesize;
+
+                echo "<tr><td>Printers</td><td> $filesize KB.</td></tr><br>";
+                
+                $file = './storage/queue.db';
+                $filesize = filesize($file); // bytes
+                $filesize = round($filesize / 1024, 1); // megabytes with 1 digit
+                $total = $total + $filesize;
+
+                echo "<tr><td>Queue</td><td> $filesize KB.</td></tr>";
+                echo "<tr><td><b>Total</b></td><td> $total KB.</td></tr>";
+                echo "</table>";
+
+          
+    }
+    
+    function userAccountInfo(){
+        
+        
+        
+           $jsonString = exec('python users.py -s Users');
+		$cards = jsonTo2DArray($jsonString);
+		//Initializes the future 2D array.
+		$users = array();
+        $numofusers = 0;
+        $numofadmin = 0;
+        $numofusers = 0;
+        $numofmods = 0;
+        $numofkiosk = 0;
+        $totalusers = 0;
+		//Loops through user stored in 2D array
+        echo "<br><b>User Account Analytics</b>";
+        echo "<table style='width: 50%;'>";
+        echo "<tr><td><b>Account Type</b></td><td><b>Amount</b></td></tr>";
+		foreach ($cards as $card)
+		{
+			$user = $card[0];
+            $permissions = $card[2];
+            
+            if($permissions == "admin"){$numofadmin = $numofadmin + 1;}
+            if($permissions == "user"){$numofusers = $numofusers + 1;}
+            $totalusers = $totalusers + 1;
+            
+             
+		}
+            echo "<tr><td>Admin</td><td>$numofadmin</td></tr>";
+            echo "<tr><td>Moderators</td><td>$numofmods</td></tr>";
+            echo "<tr><td>Student Tech</td><td>$numofusers</td></tr>";
+            echo "<tr><td>Kiosk User</td><td>$numofkiosk</td></tr>";
+            echo "<tr><td><b>Total Users<b></td><td>$totalusers</td></tr>";
+
+
+            echo "</table>";
+        
+        
+        
+        
+    }
+
+        
+        
+        
+   
+
+        ?>
+    

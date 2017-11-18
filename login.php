@@ -2,12 +2,13 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-$right = $_POST["input"];
-$hashed = password_hash($right, PASSWORD_BCRYPT);
+$right = uniqid(rand(), true);
+
+$hashed = hash('sha256', $right);
 
 
 
-echo "Your password hashed: " . $hashed . "\n"; 
+echo "Your password hashed: " . $right . "\n"; 
 echo "<br>";
 
 
@@ -24,20 +25,7 @@ echo "<input type='submit' name='submit' value='submit'></form><br>";
 
 
 
-$db = new PDO('sqlite:/var/www/html/se1-v1/users.db');
-$result = $db->query('SELECT username FROM Users');
-echo "<table>";
-foreach($result as $row){
-    echo "<tr><td>".row['username']."</td></tr>";
-    
-    
-    
 
-    
-}
-  echo "</table>";  
-
-$db = null;
 
 ?>
 

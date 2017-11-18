@@ -46,34 +46,20 @@
             </div>   
         
 	</body>
+    <div id='inputRight'>
     
-       <?php
-            
-			if ($_SERVER['REQUEST_METHOD'] == 'POST')
-			{
-			 
-				$username = $_POST['username'];                    
-				$password = $_POST['password'];
-				$permission = $_POST['permission'];
-                
-                $hashed = password_hash($password, PASSWORD_DEFAULT);
-                
-				$execStatement = "python users.py -i Users username password permissions -v";
-               
-
-
-				exec($execStatement .= ' ' . $username . ' ' . $hashed = password_hash($password, PASSWORD_DEFAULT) . ' ' . $permission);
-                
-                echo '<meta http-equiv="Refresh" content="0;' . $page . '">';
-
-			}
-		?>
+<?php 
     
-     <div id="inputRight">
-         <div class="createModuleInput">
+       if(($_SESSION['userlogin'] != 'admin')){header('Location: index.php');}
+    else{
+
+    
+    
+    echo "
+         <div class='createModuleInput'>
          <center><h3><b>Create New User</b></h3></center>
 
-		<form action='accounts.php' method='post' name='insert'>
+		<form action='createAccount.php' method='post' name='insert'>
 			Username:<br> <input type='text' name='username'>
 			<br />
 			Password: <br><input type='text' name='password'>              
@@ -84,15 +70,13 @@
 			
 			<input type='submit' name='Insert' value='Create User' />
 		</form>
-            </div>
-        
-            
-    </div>
-       
- <div id="inputLeft">
-            </div>
+            </div>";
+    
+    
+     }
+?>
             
     
-
+    </div>
 </html>
 

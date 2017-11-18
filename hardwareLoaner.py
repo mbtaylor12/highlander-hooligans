@@ -5,7 +5,7 @@ import sqlite3
 from sqlite3 import Error
 
 helpFile = os.path.join(os.path.dirname(__file__),"help.txt")
-db_file = os.path.join(os.path.dirname(__file__),"hardware.db")
+db_file = os.path.join(os.path.dirname(__file__),"storage/hardware.db")
 
 errorArgument = "Arguments did not follow proper structure, please read the man using -m."
 

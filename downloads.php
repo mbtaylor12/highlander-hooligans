@@ -29,8 +29,7 @@
 
 
             <div class='moduleCreate'>
-                		<h1 id='moduleTitle'><b>Downloads
-Utilities</b></h1>
+                		<h1 id='moduleTitle'><b>Utilities</b></h1>
                 <?php echo downloadsUtilities(); ?>
             </div>
             
@@ -42,11 +41,9 @@ Utilities</b></h1>
             <div class="moduleCreate">
                 
             <h1 id="moduleTitle"><b>Drivers and Guides</b></h1>
-                <p>This table is produced by looping through the folder and displays every file as a download link.
-                    It is dynamic depending on how many files are in the folder!
-                </p>
                 
-                        <?php echo getfilesDownloads(); ?>
+                
+                        <?php echo getfilesGuides(); ?>
                            
             </div>
             
@@ -60,68 +57,7 @@ Utilities</b></h1>
 
     
 	</body>
-        <?php
-        
-        
-        
-    session_start();
-    $permissions = $_SESSION['idlevel'];
-  
-    if($permissions == 'admin'){
-    
-        
-         echo'  <div id="inputLeft">    <!-- input left side. -->
-            
-            
-        <div class="createModuleInput">
-            <form action="accounts.php" method="post" enctype="multipart/form-data">
-                <b><u>Select image to upload. this will upload to the /downloads folder.</u></b>
-                <br>
-                <br>
-                <center><input type="file" name="uploaded_file" id="fileToUpload"></center>
-                <input style=" margin-bottom: 5px;" type="submit" value="Upload Image" name="submit">
-            </form>
-            
-            </div></div>';
-            
-    
-        //downloads function. Must be contained within page for alerts to work
-        if ($_SERVER['REQUEST_METHOD'] == 'POST')
-        { 
-                                           
-                                           
-      
-      
-      
-        $path = "/downloads";
-        $path = $path . basename( $_FILES['uploaded_file']['name']);
-        if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $path))             //this functionality will need to be advanced in the
-                                                                                        //future for security.
-            {
-            
-            echo '<script language="javascript">';
-            echo 'alert("File uploaded!")';
-            echo '</script>';
-            
-           
-            } 
-            else
-                {
-            
-                    echo '<script language="javascript">';
-                    echo 'alert("There was an error uploading the file, please try again!")';
-                    echo '</script>';
-                
-                }
-                    echo '';
+        <div id="inputRight"></div>
 
-                    
-            }
-                            }
-               
-            
-
-        ?>
-    <div id="inputRight"></div>
-    
+        
 </html>

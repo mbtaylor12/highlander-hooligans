@@ -1,5 +1,5 @@
-
 <!DOCTYPE html>
+
 <html>
 	<head>
 		<?php require_once("master.php") ?>
@@ -7,8 +7,9 @@
 		<script src="script.js"></script>
 		<title>TAC Webapp Login</title>
 	</head>
+
 	<body  id="loginbody" style="background-repeat: no-repeat;" link="#ffffff" vlink="#ffffff" alink="#003a99">
-			
+
 				<form action="loginManager.php" method="POST" id="signInForm" class="signInForm">
 				<div class="loginField">
                     <div id="loginHeader">
@@ -35,4 +36,5 @@
 				</form>
 		
 	</body>
+  
 </html>

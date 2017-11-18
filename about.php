@@ -35,8 +35,6 @@
 
     
 	</body>
-             <div id="inputRight">
-            </div>
-            <div id="inputLeft">
-            </div>
+    <div id="inputRight"></div>
+
 </html>

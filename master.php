@@ -6,9 +6,9 @@
 	function makeHeader($index)
 	{
 		//An array of pages and their title. "page.php" => "Header Text".
-		$headers = array( "downloads.php" => "Downloads", "checkouts.php" => "Checkouts", "queue.php" => "Queue", "hardware_info.php" => "Hardware Info", "accounts.php" => "Accounts", "about.php" => "About" );
+		$headers = array( "downloads.php" => "Downloads", "checkouts.php" => "Checkouts", "queue.php" => "Queue", "hardware_info.php" => "Hardware", "accounts.php" => "Account", "about.php" => "About" );
 
-		$headerTable = "<br /><div id='colorbar'><a id='logoutlink' href='logout.php'>Logout</a><img id='img1' src='./images/radfordlogo2.gif' alt='logo' ><div id='headerContainer'>\n";
+		$headerTable = "<br /><div id='colorbar'><img id='img1' src='./images/radfordlogo2.gif' alt='logo' ></div><div id='headerContainer'><br><div id='menuline'></div><br><a id='logoutlink' href='logout.php'>Logout</a><a id='settingslink' href='settings.php'>Settings</a><br><br><br><div id='menuline'></div><br>";
 
 		$indexIterator = 0;
 
@@ -25,7 +25,7 @@
 			$indexIterator += 1;
 		}
 
-		$headerTable .= "</div></div></div><br />";
+		$headerTable .= "</div></div><br />";
 
 		return $headerTable;
 	}

@@ -23,13 +23,24 @@
         <div id="header"><?php echo makeHeader(1); ?></div>
        
         <div id="centerContent">
+
+            <div class='moduleCreate'>        
+                <h1 id='moduleTitle'><b>Asset Checkout</b></h1>
+
+                        <?php echo checkout(); ?>
+
             
+            
+            
+            
+            
+            </div>
+
         </div>
 
             
 	</body>
-    <div id="inputLeft">
-            </div>
+    
     <div id="inputRight">
             </div>
 </html>

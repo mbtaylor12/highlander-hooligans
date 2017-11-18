@@ -34,7 +34,7 @@
 			 								<p class='contentLeft'>Asset Description: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$assetDesc'></p><br /><br />\n
 			 								<p class='contentLeft'>Periphereals: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$periphIncluded'></p><br /><br />\n
 			 								<p class='contentLeft'>Ticket Status: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$ticketStat'></p><br />\n</center></div>
-			 								<center><p class='contentLeft'><button>Apply</button></p></center>\n"; 
+			 								<center><p><button>Apply</button></p></center>\n"; 
 			//Assigns key-value pairs for the name and content.
 			$tempArray = array ("name" => $name, "content"=> $content);
 			//Pushes the $tempArray onto the $hardware array, creating a 2D array.
@@ -42,6 +42,8 @@
 		}
 		return createCollapsibleView($hardware);
 	}
+
+
 	/*
 	*createCollapsibleView - Makes a collapsible card view.
 	*@param $cards - A 2D array where each sub-array's key-value pair is "name"=>$name and "content"=>$content.
@@ -62,7 +64,7 @@
 		{
 			$user = $card[0];
 			$password = $card[1];
-			
+            $permissions = $card[2];			
 			$name = $user;
             
 			//Creates the body of the card view in the layout I have chosen. 
@@ -71,17 +73,14 @@
             
 			$content = "					
             <p class='contentLeft'>Username: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$user'></p>\n 
-			 								<p class='contentRight'>Password: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$password'></p><br /><br />\n
-                                            <select class='contentLeft'>
-                                                <option value='admin'>Admin</option>
-                                                <option value='mod'>Moderator</option>
-                                                <option value='studenttech'>Student Tech</option>   
-                                                <option value='user''>User</option>
-                                            </select><br/><br />
+			 								<p class='contentLeft'>Password: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value=''></p><br /><br />\n
+                                            <p class='contentLeft'>Permission Level: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$permissions'></p><br /><br />\n
+
 			 								<p class='contentRight'><button>Apply</button></p>\n";
             
 			//Assigns key-value pairs for the name and content.
 			$tempArray = array ("name" => $user, "content"=> $content);
+            
 			//Pushes the $tempArray onto the $user array, creating a 2D array.
 			array_push($users, $tempArray);
 		}
@@ -279,6 +278,45 @@ function downloadsDrivers(){
                         <p class=''>Email: $email</p>\n
                         <p class=''>Operating system: $os</p>\n
                         <p class=''>Description of problem: $description</p>\n";
+            
+			//Assigns key-value pairs for the name and content.
+			$tempArray = array ("name" => $name, "content"=> $content);
+			//Pushes the $tempArray onto the $user array, creating a 2D array.
+			array_push($users, $tempArray);
+		}
+		return createCollapsibleView($users);
+        
+        
+    }
+function checkout(){  
+        
+        $jsonString = exec('python checkout.py -s past');
+		$cards = jsonTo2DArray($jsonString);
+		//Initializes the future 2D array.
+		$users = array();
+		//Loops through user stored in 2D array
+		foreach ($cards as $card)
+		{
+			$namef  = $card[1];
+			$email = $card[2];
+            $placeinqueue = $card[0];
+            $os = $card[4];
+            $description = $card[5];
+            
+			
+			$name = $namef;
+            
+			//Creates the body of the card view in the layout I have chosen. 
+			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
+            //The select option for choosing the user permissions may be changed up later -Dylan
+            
+			$content = "<form action='checkout.php'>
+                            <input type='submit' name='checkoutsubmit' >
+            
+            
+            
+            
+                        </div>";
             
 			//Assigns key-value pairs for the name and content.
 			$tempArray = array ("name" => $name, "content"=> $content);

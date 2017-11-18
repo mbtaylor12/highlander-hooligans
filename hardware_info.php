@@ -24,9 +24,10 @@
 
 	<body id='accountsbody'>
         <div id="header"><?php echo makeHeader(3); ?></div>
-	<div id='centerContent'>
+        <div id='centerContent'>
+	<div id='leftSide'>
         <div class='moduleCreate'>
-        <h1 id='moduleTitle'><b>Hardware Info</b></h1>
+        <h1 id='moduleTitle'><b>Loaner Hardware</b></h1>
         <?php echo hardware(); ?>
 
             	<?php
@@ -55,11 +56,36 @@
 
 	</div>
         </div>
+            <div id='rightSide'>
+            <div class='moduleCreate'>
+                <h1 id='moduleTitle'><b>Printers</b></h1>
+
+                    <?php echo hardware(); ?>
+
+            
+            </div>
+                </div>
+            </div>
         
-        <div id="inputLeft" >
         	
           
+          
+          	
+        
+        <div id="inputRight">
             <div class="createModuleInput">
+        	
+
+		<form action='hardware_info.php' method='post' name='insert'>                 
+			Search key: <input type='text' name='manufacturer'>
+			<br />
+			Search by: <input type='text' name='model'>
+			<br />
+			<input type='submit' name='Insert' value='submit' />
+		</form>
+            
+        </div>
+              <div class="createModuleInput">
 		<form action='hardware_info.php' method='post' name='insert'>
             <b>Manufacturer</b> <br><input type='text' name='manufacturer'>
 			<br />
@@ -81,22 +107,6 @@
 		</form>
             </div>
             </div>
-          	
-        
-        <div id="inputRight">
-            <div class="createModuleInput">
-        	
-
-		<form action='hardware_info.php' method='post' name='insert'>                 
-			Search key: <input type='text' name='manufacturer'>
-			<br />
-			Search by: <input type='text' name='model'>
-			<br />
-			<input type='submit' name='Insert' value='submit' />
-		</form>
-            
-        </div>
-        </div>
         
 	</body>
 </html>

@@ -1,24 +1,90 @@
 #headerContainer 
 {
-    position: absolute;
-    background: #ffffdd;
-    left: 14%;
-    right: 14%;
-    border-radius: 20px;
+    background: #d1d3d4;
     border: solid;
     border-color: black;
     border-width: 3px;
-    top:45%;
     font-size: 7pt;
+    position: absolute;
+    top: 15%;
+    height: 100%;
+    width: 18%;
+    display: block;
     
+}
+#logoutlink{
+    position: relative;
+    float: left;
+    border: 2px solid black;
+    width: 45%;
+    font-size: 15px;
+    text-decoration: none;
+    color: white;
+    background-color: #808285; 
+    margin: 3px;
+    text-align: center;
+
+}
+#logoutlink:hover{
+    position: relative;
+    transition: .7s;
+    float: left;
+    border: 2px solid black;
+    width: 45%;
+    font-size: 15px;
+    text-decoration: none;
+    color: white;
+    background-color: #4e4f51; 
+    margin: 3px;
+    text-align: center;
+
+}
+
+#settingslink{
+    position: relative;
+    float: right;
+    border: 2px solid black;
+    width: 45%;
+    font-size: 15px;
+    text-decoration: none;
+    color: white;
+    background-color: #808285; 
+    margin: 3px;
+    text-align: center;
+
+}
+#settingslink:hover{
+    transition: .7s;
+    position: relative;
+    float: right;
+    border: 2px solid black;
+    width: 45%;
+    font-size: 15px;
+    text-decoration: none;
+    color: white;
+    background-color: #4e4f51; 
+    margin: 3px;
+    text-align: center;
+
 }
 
 
+#menuline{
+    background-color: black;
+    width: 80%;
+    height: 2px;
+    margin: auto;
+    margin-bottom: -15px;
+    position: relative;
+    top: -5px;
+    bottom: 0%;
+
+}
 
 #colorbar
 {
     width:100%;
-    height: 21%;
+    height: 15%;
     top: 0%;
     position: fixed;
     text-align:center;
@@ -33,9 +99,8 @@
     }
 #test{
     position: relative;
-    top: 20%;
-    font-size: 330%;
-    margin-left: 5;
+    display: block;
+    
 
         
 }
@@ -43,31 +108,48 @@
 .headerUnselected
 {
     
-    transition: .5s;
+    transition: .7s;
     font-family: arial;
-	font-size: 10px;
+	font-size: 20px;
 	color:black;
 	text-decoration: none;
-    padding: 10px 10px;
+    margin-left: 5px;
+    font-size:320%;
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: gray;
    
 
     
 }
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 1024px) {
     #leftsidebar {width: 200px; float: left;}
     #main {margin-left: 216px;}
+    .test{ font-size: 200%;}
+    
 }
 .headerSelected,.headerSelected:hover,.headerUnselected:hover
 {
-    transition: .5s;
-    padding: 4px 10px;
+    transition: .7s;
     font-family: arial;
-	font-size: 10pt;
-	border-bottom: solid;
-	color:black;
-	border-color: black;
-	border-bottom-width: 10px;
+	font-size: 20px;
 	text-decoration: none;
+    color: #c2011b; 
+    margin-left: 15px;
+    font-size:320%;
+    border-right: solid;
+    border-right-width: 8px;
+    border-right-color: #c2011b;
+    border-bottom: solid;
+    border-bottom-width: 1px;
+    border-bottom-color:gray;
+    
+}
+#test:hover{
+    position: relative;
+    display: block;
+    margin-left: 15px;
+    color: #c2011b; 
 }
 .card:hover
 {
@@ -76,11 +158,10 @@
 #moduleTitle{
     background-color: gray;
     margin-top: 0px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
     height: 40px;
     border-bottom: solid;
     border-width: 1.5px;
+    font-size: 20pt;
 }
 .card
 {
@@ -137,17 +218,24 @@
 .notEditing{
 	background:rgba(0,0,0,0);
     border:none;
+    text-align: center;
+    width: 100px;
 }
 .editing{
 	border:solid;
 	border-color: lightgrey;
+    text-align: center;
+        width: 100px;
+
+
 }
 #aaccordion{
     
     margin-top: 10px;
 }
 #accounts1{
-   width: 50%;   
+   width: 50%; 
+    height: 100%;
 }
 
 #header{
@@ -155,7 +243,13 @@
     
 }
 #accountsbody{
-    background-color:#082465;
+   width:100%;
+    height: auto !important;
+    border: 5px solid black;
+
+
+
+
 }
 
 #leftSide{
@@ -169,26 +263,20 @@
     float: right;
     width: 49.5%;
     
+    
 
 }
-.center
-{
-    
-    
-    
-}
+
 .moduleCreate
 {
 
     width:100%;
     color:black;
-    text-align: center;
+    text-align:center;
     margin-left: auto;
     margin-right: auto;
     border: 5px solid black;
     margin-bottom:5pt;
-    
-    border-radius: 15px;
     background-color: white;
     box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, .2);
 
@@ -205,7 +293,6 @@
     border-width: auto;
     border:solid;
     background-color: white;
-    border-radius: 20px;
     box-shadow: 3px 4px 4px 1px rgba(0, 0, 0, .2);
     margin-top: 10px;
     
@@ -222,37 +309,27 @@
     
     left: 19%;
     right: 19.5%;
-    top: 25%;
+    top: 16%;
     position: absolute;
     border-radius: 15px;
     border-width: 4px;
     text-align: center;
     
-}
-
-#inputLeft
-{
-    
-    position: absolute;
-    top: 21%;
-    height: 100%;
-    width: 18%;
-    display: block;
-    background-color: #808285;
-    border-right: 5px solid black;
-
     
 }
+
+
+
 #inputRight
 {
     position: absolute;
     width: 18%;
-    height: 100%;
-    top: 21%;
-    right:0%;
+    height:100%;
+    top: 15%;
+    right: 0%;    
     display: block;  
-    background-color: #808285;
-    border-left: 5px solid black;
+    background-color: #d1d3d4;
+    border: 3px solid black;
 
 	
 }
@@ -361,7 +438,7 @@ img
     
 
 }
-#loginbody{    background-image: url("/images/background-resized.jpg");
+#loginbody{    background-image: url("images/background2.jpg");
     background-size: 100% auto;
      border-radius: 10px;
     width: 460px;
@@ -461,6 +538,8 @@ img
 {
     width: 100%;
     margin: 0% auto;
+    
+    
 }
 
 .leftSideDiv
@@ -477,21 +556,9 @@ img
 .queueSignInSubmit
 {
     text-align: center;
-    width: 25%;
+    width: 10px;
 }
 
-#centerContentQueueSignIn
-{
-    
-    left: 19%;
-    right: 19.5%;
-    top: 100%;
-    position: absolute;
-    border-radius: 15px;
-    border-width: 4px;
-    text-align: center;
-    
-}
 
 .img1
 {
@@ -526,28 +593,62 @@ table
     border-radius: 15px;
 }
 
-input
-{
-    text-align: left;
-}
-input[type="submit"]
+
+input[type=submit]
 {
     
-    width: 40%;
-    margin: 2pt;
-    margin-left: auto;
-    margin-right: auto;
-}
-#logoutlink{
-    float: left;
-    border: 2px solid black;
-    border-radius: 10px;
     width: 100px;
-    text-decoration: none;
+    margin: 3px;
+    margin-left: 2px;
+    margin-right: 2px;
+    text-align: center;
+    background-color: gray;
+    border: 2px solid black;
+    font-size: 15px;
     color: white;
     background-color: #808285; 
-    margin: 5px;
 
 }
-	
 
+input[type=submit]:hover
+{
+    transition: .7s;
+    width: 100px;
+    margin-top: 3px;
+    margin-left: 2px;
+    margin-right: 2px;
+    text-align: center;
+    background-color: #4e4f51;
+    border: 2px solid black;
+    font-size: 15px;
+    color: white;
+
+}
+
+#databasesize{
+    width: 50%;
+    margin-top: -40px;
+}
+
+.viewnav {
+    
+    margin-bottom: 5px;
+    height: 40px;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    display: block;
+    
+}
+#spacer{
+    width: 5px;
+    background-color: black;
+}
+
+#navview{
+    text-align: center;
+    position: relative;
+    float: left;
+    height: 100%;
+    font-size: 13pt;
+
+}

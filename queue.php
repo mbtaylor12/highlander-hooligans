@@ -49,23 +49,35 @@
             
             <div id="rightSide">
             
-            <div class="moduleCreate">
-                <h1 id="moduleTitle"><b>Enter Help Queue</b></h1>
-            <form action='queue.php' method='post' name='insert'>
-			Name:<br> <input type='text' name='name'>
+          
+                <div class="moduleCreate">
+        	
+
+		<form action='#' method='post' name='insert'>                 
+			Search key:<br> <input type='text' name='manufacturer'>
 			<br />
-			Email: <br><input type='text' name='email'>              
+			Search by: <br><input type='text' name='model'>
 			<br />
-            RU ID: <br><input type='text' name='ruid'>              
-            <br />
-			Operating System:<br> <input type='text' name='os'>
-			<br />
-			Problem Description:<br> <input type='text' name='description'>
-			<br />
-			
 			<input type='submit' name='Insert' value='submit' />
 		</form>
-            </div>
+                    
+            
+        </div>
+                  <div class="moduleCreate">
+        	
+            <br>
+        <center>Move first user out of waiting queue.</center>
+		<form action='popqueue.php' method='post' name='insert'>                 
+			
+			<input type='submit' value='Pop' />
+		</form>
+        <center>Refresh queue and backup</center>
+        <form action='refeshQueue.php' method='post' name='insert'>                 
+			
+			<input type='submit' value='Refresh' />
+		</form>
+            
+        </div>
                 </div>
             
             
@@ -92,6 +104,7 @@
                    
                 </div>
                 <br>
+               
              
                 </div>
             
@@ -101,37 +114,8 @@
 
     
 	</body>
-     <div id="inputRight">
-            <div class="createModuleInput">
-        	
+        <div id="inputRight"></div>
 
-		<form action='#' method='post' name='insert'>                 
-			Search key: <input type='text' name='manufacturer'>
-			<br />
-			Search by: <input type='text' name='model'>
-			<br />
-			<input type='submit' name='Insert' value='submit' />
-		</form>
-            
-        </div>
-        </div>
-    <div id="inputLeft">
-    <div class="createModuleInput">
-        	
-            <br>
-        <center>Move first user out of waiting queue.</center>
-		<form action='popqueue.php' method='post' name='insert'>                 
-			
-			<input type='submit' value='Pop' />
-		</form>
-        <center>Refresh queue and backup</center>
-        <form action='refeshQueue.php' method='post' name='insert'>                 
-			
-			<input type='submit' value='Refresh' />
-		</form>
-            
-        </div>
-        </div>
     
     
     

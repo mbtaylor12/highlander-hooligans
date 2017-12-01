@@ -7,6 +7,7 @@
 
     
 ?>
+       
 <html>
 	<head>
 		<?php require_once("master.php") ?>
@@ -22,71 +23,51 @@
 	</head>
   
 
-	<body id='accountsbody'>
         <div id="header"><?php echo makeHeader(3); ?></div>
+    	<div id='accountsbody'>
+
         <div id='centerContent'>
-	<div id='leftSide'>
-        <div class='moduleCreate'>
-        <h1 id='moduleTitle'><b>Loaner Hardware</b></h1>
-        <?php echo hardware(); ?>
-
-            	<?php
+        <div class="viewnav" id="myTopnav">
+        <?php 
+            $jsonString = exec('python hardwareLoaner.py -s class -all');
+            $cards = jsonTo2DArray($jsonString);
             
-			if ($_SERVER['REQUEST_METHOD'] == 'POST')
-			{
-			 
-				$assetNum = $_POST['assetTag'];
-				$assetDesc = $_POST['assetDesc'];
-				$manuFac = $_POST['manufacturer'];
-				$modelNum = $_POST['model'];
-				$serialNum = $_POST['serialNum'];
-				$periphIncluded = $_POST['periphreals'];
-				$roomNum = $_POST['location'];
-				$ticketStat = $_POST['ticketStatus'];
-
-				$execStatement = "python hardwareLoaner.py -i hardwareLoaners assetNum assetDesc manuFac modelNum serialNum periphIncluded roomNum ticketStat -v $assetNum $assetDesc $manuFac $modelNum $serialNum $periphIncluded $roomNum $ticketStat";
-
-
-				exec($execStatement);
-                
-                echo '<meta http-equiv="Refresh" content="0;' . $page . '">';
-
-			}
-		?>
-
-	</div>
-        </div>
-            <div id='rightSide'>
-            <div class='moduleCreate'>
-                <h1 id='moduleTitle'><b>Printers</b></h1>
-
-                    <?php echo hardware(); ?>
-
             
-            </div>
+            
+           
+          echo"  <div id='navview'><form id='searchform' action='hardware_info.php' method='post'>
+                            <b>Current Hardware View:</b>";
+              
+             foreach ($cards as $card){
+                $class = $card[0];
+                 
+            echo "<input id='navbutton' type='submit' value='$class' name='submitclass'>";
+             }
+           echo " </select></form></div>";
+              ?>
+              
                 </div>
-            </div>
-        
-        	
-          
-          
-          	
-        
-        <div id="inputRight">
-            <div class="createModuleInput">
-        	
-
-		<form action='hardware_info.php' method='post' name='insert'>                 
-			Search key: <input type='text' name='manufacturer'>
-			<br />
-			Search by: <input type='text' name='model'>
-			<br />
-			<input type='submit' name='Insert' value='submit' />
-		</form>
             
+          <?php 
+            if(isset($_POST["submitclass"])){
+                $class = $_POST["submitclass"];
+            
+            echo hardwareController($class);
+               
+            }
+
+            ?>
+       
+	
         </div>
+            
+           
+ <div id="inputRight">
+            
+      
               <div class="createModuleInput">
-		<form action='hardware_info.php' method='post' name='insert'>
+        
+		<form action='addHardware.php' method='post' name='insert'>
             <b>Manufacturer</b> <br><input type='text' name='manufacturer'>
 			<br />
 			<b>Model</b><br> <input type='text' name='model'>
@@ -106,7 +87,19 @@
 			<input type='submit' name='Insert' value='submit' />
 		</form>
             </div>
+     
+            <div class='createModuleInput'>
+                <form>
+                <b>Search by: <br></b><select id='hardwaresearchby'>
+                <option value='none' selected>None</option>
+                <option  value='Asset Num'><b>Loaner Hardware</b></option>
+                <option  value='Model'><b>Printers</b></option>
+                </select>
+                <input type='text' name='hardwaresearch' style='width:35%;'>
+                <input type='submit' name='Search'>
+                    </form>
+                       </div>
             </div>
         
-	</body>
+	</div>
 </html>

@@ -13,13 +13,13 @@
 	</head>
 
             <div id="header">
-            	<div id='colorbar'><img class='img1' src='./images/radfordlogo2.gif' alt='logo' ><div id='headerContainer'>
+            	<div id='colorbar'><img class='img1' src='./images/radfordlogo2.gif' alt='logo' >
             </div>
 
 	<body id="accountsbody">
         
        
-        <div id="centerContentQueueSignIn">
+        <div id="centerContent">
          
             
             <center>
@@ -49,13 +49,13 @@
 			if ($_SERVER['REQUEST_METHOD'] == 'POST')
 			{
 			 
-				$name = $_POST['name'];                     //early stages of a inserting into queue. Will not work yet.
+				$name = $_POST['name'];                     
 				$email = $_POST['email'];
                 $ruid = $_POST['ruid'];
 				$os = $_POST['os'];
 				$description = $_POST['description'];
 				
-				$execStatement = "python queue_handler.py -i $name $email $ruid $os $description";
+				$execStatement = "python queue_handler.py -i $name $email $ruid $os '$description'";
 
                 exec($execStatement);
                 
@@ -66,4 +66,3 @@
 
     
 	</body>
-</html>

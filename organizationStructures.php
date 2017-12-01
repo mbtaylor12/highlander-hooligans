@@ -1,4 +1,5 @@
 <?php
+    require_once("master.php");
 	
 	error_reporting(E_ALL);
 	/*
@@ -6,13 +7,27 @@
 	*Calls function creatCollapsibleCardView using hardware data to get a hardware card view.
 	*@return - HTML for a collapsible card view.
 	*/
-	function hardware()
+
+    function hardwareController(string $class)
+        {
+            
+            echo "<div class='moduleCreate'>
+            <h1 id='moduleTitle'><b>$class</b></h1>";
+            
+            echo hardware($class);
+            
+            echo "</div>";
+        
+        }
+    
+	function hardware(string $class)
 	{
         $jsonString = exec('python hardwareLoaner.py -s hardwareLoaners -all');
 		$cards = jsonTo2DArray($jsonString);
 		//Initializes the future 2D array.
 		$hardware = array();
 		//Loops through each piece of hardware stored in 2D array
+        
 		foreach ($cards as $card)
 		{
 			$assetTag = $card[0];
@@ -24,26 +39,27 @@
 			$roomNum = $card[6];
 			$ticketStat = $card[7];
 			$name = $assetTag;
+            
 			//Creates the body of the card view in the layout I have chosen. 
 			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
-			$content = "<div id='leftSide'><center>
-						<form action='hardwareUpdateHelp.php' method='post'>
-						<p class='contentLeft'>Manufacturer: <input name='manufacturer' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$manuFac'></p>\n
-			 			<p class='contentLeft'>Location: <input name='location' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$roomNum'></p><br /><br />\n
-			 			<p class='contentLeft'>Model: <input name='model' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$modelNum'></p><br /><br />\n
-			 			<p class='contentLeft'>Serial Number: <input name='serialNumber' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$serialNum'></p><br /><br />\n</center></div><div id='rightSide'><center>
-			 			<p class='contentLeft'>Asset Tag: <input name='assetTag' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$assetTag'></p><br /><br />\n
-			 			<p class='contentLeft'>Asset Description: <input name='description' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$assetDesc'></p><br /><br />\n
-			 			<p class='contentLeft'>Periphereals: <input name='periphereals' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$periphIncluded'></p><br /><br />\n
-			 			<p class='contentLeft'>Ticket Status: <input name='ticketS' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$ticketStat'></p><br />\n</center>
-			 			<input type='submit' value='Update'>
-			 			</form>
-			 			</div>\n"; 
+			$content = "					
+                                            <div id='leftSide'><center><p class='contentLeft'>Manufacturer:  <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)'              onblur='stopEditing(this)' value='$manuFac'></p><br><br>\n
+			 								<p class='contentLeft'>Location: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$roomNum'></p><br><br >\n
+			 								<p class='contentLeft'>Model: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$modelNum'></p><br /><br />\n
+			 								<p class='contentLeft'>Serial Number: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$serialNum'></p><br /><br />\n</center></div>
+                                            <div id='rightSide'><center>
+			 								<p class='contentLeft'>Asset Tag: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$assetTag'></p><br /><br />\n
+			 								<p class='contentLeft'>Asset Description: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$assetDesc'></p><br /><br />\n
+			 								<p class='contentLeft'>Periphereals: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$periphIncluded'></p><br /><br />\n
+			 								<p class='contentLeft'>Ticket Status: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$ticketStat'></p><br />\n</center></div>
+			 								"; 
 			//Assigns key-value pairs for the name and content.
 			$tempArray = array ("name" => $name, "content"=> $content);
 			//Pushes the $tempArray onto the $hardware array, creating a 2D array.
 			array_push($hardware, $tempArray);
 		}
+                    
+
 		return createCollapsibleView($hardware);
 	}
 
@@ -170,27 +186,6 @@ function downloadsDrivers(){
 		return createCollapsibleView($users);
         
         
-    }
-
-    function queueWaitingTable(){
-    	$jsonString = exec('python queue_handler.py -s waiting');
-		$entries = jsonTo2DArray($jsonString);
-
-		$table = "
-		<table>
-		<tr><th>Customer Number</th><th>First/Last Initial</th></tr>";
-
-		foreach($entries as $entry)
-		{
-			$customerNumber = $entry[0];
-			$email = substr($entry[2], 0, 2);
-
-			$table .= "<tr><td>$customerNumber</td><td>$email</td></tr>";
-		}
-
-		$table .= "</table>";
-
-		return $table;
     }
 
 //90% working queue card function. Card will not expand

@@ -58,11 +58,11 @@
 
                 echo "<table id='databasesize'>";
                 echo "<tr><td><b>Database</b></td><td><b>Size</b></td></tr>";
-                $file = 'storage/hardware.db';
+                $file = 'storage/hardwareinfo.db';
                 $filesize = filesize($file); // bytes
                 $filesize = round($filesize / 1024, 1); // megabytes with 1 digit
                 $total = $total + $filesize;
-                echo "<tr><td>Hardware</td><td> $filesize KB.</td></tr><br>";
+                echo "<tr><td><a href='hardwareView.php'>Hardware</a></td><td> $filesize KB.</td></tr><br>";
                 $file = 'storage/users.db';
                 $filesize = filesize($file); // bytes
                 $filesize = round($filesize / 1024, 1); // megabytes with 1 digit
@@ -131,10 +131,38 @@
         
     }
 
-        
-        
-        
-   
-
-        ?>
+function loanerTableView(){
+    
+    $jsonString = exec('python hardwareLoaner.py -s hardwareLoaners -all');
+		$cards = jsonTo2DArray($jsonString);
+		//Initializes the future 2D array.
+		$hardware = array();
+		//Loops through each piece of hardware stored in 2D array
+        echo "<table>";
+        echo "<tr><td><b>assetTag</b></td><td><b>assetDsc</b></td><td><b>manuFac</b></td><td><b>modelNum</b></td><td><b>serialNum</b></td><td><b>periphIncluded</b></td><td><b>roomNum</b></td><td><b>ticketStat</b></td></tr>";
+		foreach ($cards as $card)
+		{
+			$assetTag = $card[0];
+			$assetDesc = $card[1];
+			$manuFac = $card[2];
+			$modelNum = $card[3];
+			$serialNum = $card[4];
+			$periphIncluded = $card[5];
+			$roomNum = $card[6];
+			$ticketStat = $card[7];
+            
+            
+            echo "<tr><td>$assetTag</td><td>$assetDesc</td><td>$manuFac</td><td>$modelNum</td><td>$serialNum</td><td>$periphIncluded</td><td>$roomNum</td><td>$ticketStat</td></tr>";
+            
+            
+            
+        }
+    
+        echo "</table>";
+    
+    
+    
+    
+}
+?>
     

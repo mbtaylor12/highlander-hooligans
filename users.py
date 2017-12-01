@@ -5,7 +5,7 @@ import sqlite3
 from sqlite3 import Error
 
 helpFile = os.path.join(os.path.dirname(__file__),"help.txt")
-db_file = os.path.join(os.path.dirname(__file__),"users.db")
+db_file = os.path.join(os.path.dirname(__file__),"storage/users.db")
 
 errorArgument = "Arguments did not follow proper structure, please read the man using -m."
 
@@ -118,17 +118,10 @@ def main():
 	Reads arguments to determine the dynamic process.
 	"""
 	if sys.argv[1] == "-s":
-		if sys.argv[3] == "-all":
 			db = connect_database()
 			with db:
 				select_all(db, sys.argv[2])
 			db.close()
-		elif sys.argv[3] == "-w":
-			db = connect_database()
-			 #Where cause select
-			db.close()
-		else:
-			print errorArgument
 	elif sys.argv[1] == "-i":
 		for i in range(3, len(sys.argv)):
 			if sys.argv[i] == "-v":

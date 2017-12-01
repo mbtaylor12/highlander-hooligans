@@ -5,7 +5,7 @@ import sqlite3
 from sqlite3 import Error
 
 helpFile = os.path.join(os.path.dirname(__file__),"help.txt")
-db_file = os.path.join(os.path.dirname(__file__),"storage/hardware.db")
+db_file = os.path.join(os.path.dirname(__file__),"storage/hardwareinfo.db")
 
 errorArgument = "Arguments did not follow proper structure, please read the man using -m."
 
@@ -68,7 +68,8 @@ def create_hardware_loaners():
 	param_type = ['TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'TEXT', 'INTEGER']
 	with db:
 		create_table(db, table_name, param_name, param_type)
-	db.close()
+        
+
 
 def select_all(db, tableName):
 	""" Select all from table
@@ -126,7 +127,6 @@ def main():
 			db.close()
 		elif sys.argv[3] == "-w":
 			db = connect_database()
-			 #Where cause select
 			db.close()
 		else:
 			print errorArgument

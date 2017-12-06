@@ -8,6 +8,14 @@
     $serialNumber = $_POST['serialNumber'];
     $ticketStatus = $_POST['ticketStatus'];
 
+    if($_POST['action'] == 'Update')
+    {
+    	echo "updating <br />";
+	}
+	else if($_POST['action'] == 'Delete')
+	{
+		echo "deleting <br />";
+	}
 
-    echo("Manufacturer: $manufacturer<br />Asset Tag: $assetTag<br />Location: $location<br />Description: $description<br />Model: $model<br />Periphereals: $periphereals<br />Serial Number: $serialNumber<br />Ticket Status: $ticketStatus");
+	echo("Manufacturer: $manufacturer<br />Asset Tag: $assetTag<br />Location: $location<br />Description: $description<br />Model: $model<br />Periphereals: $periphereals<br />Serial Number: $serialNumber<br />Ticket Status: $ticketStatus");
 ?>

@@ -42,17 +42,29 @@
             
 			//Creates the body of the card view in the layout I have chosen. 
 			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
-			$content = "					
-                                            <div id='leftSide'><center><p class='contentLeft'>Manufacturer:  <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)'              onblur='stopEditing(this)' value='$manuFac'></p><br><br>\n
-			 								<p class='contentLeft'>Location: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$roomNum'></p><br><br >\n
-			 								<p class='contentLeft'>Model: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$modelNum'></p><br /><br />\n
-			 								<p class='contentLeft'>Serial Number: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$serialNum'></p><br /><br />\n</center></div>
-                                            <div id='rightSide'><center>
-			 								<p class='contentLeft'>Asset Tag: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$assetTag'></p><br /><br />\n
-			 								<p class='contentLeft'>Asset Description: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$assetDesc'></p><br /><br />\n
-			 								<p class='contentLeft'>Periphereals: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$periphIncluded'></p><br /><br />\n
-			 								<p class='contentLeft'>Ticket Status: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$ticketStat'></p><br />\n</center></div>
-			 								"; 
+			$content = "<div id='leftSide'><center>
+						<form action='hardwareUpdateHelp.php' method='post'>
+						<p class='contentLeft'>Manufacturer: <input name='manufacturer' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$manuFac'></p>\n
+			 			<p class='contentLeft'>Location: <input name='location' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$roomNum'></p><br /><br />\n
+			 			<p class='contentLeft'>Model: <input name='model' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$modelNum'></p><br /><br />\n
+			 			<p class='contentLeft'>Serial Number: <input name='serialNumber' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$serialNum'></p><br /><br />\n</center></div><div id='rightSide'><center>
+			 			<p class='contentLeft'>Asset Tag: <input name='assetTag' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$assetTag'></p><br /><br />\n
+			 			<p class='contentLeft'>Asset Description: <input name='description' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$assetDesc'></p><br /><br />\n
+			 			<p class='contentLeft'>Periphereals: <input name='periphereals' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$periphIncluded'></p><br /><br />\n
+			 			<p class='contentLeft'>Ticket Status: <input name='ticketStatus' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$ticketStat'></p><br />\n</center>";
+
+			 			if($_SESSION['idlevel'] == 'admin')
+			 			{
+			 				$content .= "<input type='submit' name='action' value='Delete'>";
+			 			}
+
+			 			if($_SESSION['idlevel'] == 'admin' OR $_SESSION['idlevel'] == 'studenttech')
+			 			{
+			 				$content .= "<input type='submit' name='action' value='Update'>";
+			 			}
+
+			 			$content.= "</form>
+			 			</div>\n"; 
 			//Assigns key-value pairs for the name and content.
 			$tempArray = array ("name" => $name, "content"=> $content);
 			//Pushes the $tempArray onto the $hardware array, creating a 2D array.
@@ -91,12 +103,21 @@
 			//The class 'contentLeft'/'contentRight' determines which side the data will be on in the card view.
             //The select option for choosing the user permissions may be changed up later -Dylan
             
-			$content = "					
-            <p class='contentLeft'>Username: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$user'></p>\n 
-			 								<p class='contentLeft'>Password: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value=''></p><br /><br />\n
-                                            <p class='contentLeft'>Permission Level: <input type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$permissions'></p><br /><br />\n
+			$content = "<form action='accountUpdateHelp.php' method='post'>					
+            				Username: <input name='username' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$user'>
+            				<br />
+			 				Password: <input name='password' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value=''>
+			 				<br />
+                            Permission Level:  <input name='permissionlevel' type='text' class='notEditing' readonly='readonly' ondblclick='makeEditable(this)' onblur='stopEditing(this)' value='$permissions'>
+                            <br />";
 
-			 								<p class='contentRight'><button>Apply</button></p>\n";
+			 				if($_SESSION['idlevel'] == 'admin')
+			 				{
+			 					$content .= "<p class='contentRight'><input type='submit' name='action' value='Update'></p>\n";
+			 					$content .= "<p class='contentRight'><input type='submit' name='action' value='Delete'></p>\n";
+			 				}
+
+			 				$content .= "</form>";
             
 			//Assigns key-value pairs for the name and content.
 			$tempArray = array ("name" => $user, "content"=> $content);
@@ -230,6 +251,27 @@ function downloadsDrivers(){
 		return createCollapsibleView($users);
         
         
+    }
+
+    function queueWaitingTable(){
+    	$jsonString = exec('python queue_handler.py -s waiting');
+		$entries = jsonTo2DArray($jsonString);
+
+		$table = "
+		<table>
+		<tr><th>Customer Number</th><th>First/Last Initial</th></tr>";
+
+		foreach($entries as $entry)
+		{
+			$customerNumber = $entry[0];
+			$email = substr($entry[2], 0, 2);
+
+			$table .= "<tr><td>$customerNumber</td><td>$email</td></tr>";
+		}
+
+		$table .= "</table>";
+
+		return $table;
     }
 
  function queueHelp(){  

@@ -1,0 +1,15 @@
+######Loaner PC Tables#####
+
+Table name: hardwareLoaners
+
+Columns: 
+assetNum
+assetDesc
+manuFac
+modelNum
+serialNum
+periphIncluded
+roomNum
+ticketState
+
+#########################
